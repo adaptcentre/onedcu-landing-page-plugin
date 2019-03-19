@@ -1,4 +1,4 @@
-# name: SFI Engage Landing Page
+# name: Imagine NUI Galway Landing Page
 # about: Plugin that injects a custom landing page into a discourse instance
 # version: 0.0.1
 # authors: Daniel Turner dturner@tcd.ie
