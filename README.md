@@ -11,3 +11,7 @@ Development process
    - windows: https://meta.discourse.org/t/beginners-guide-to-install-discourse-on-windows-10-for-development/75149
  - download this plugin either to the /plugin folder of the discource clone or create a symlink
  	 - simlink: https://meta.discourse.org/t/beginners-guide-to-creating-discourse-plugins-part-4-git-setup/31272
+
+
+Commands
+ - rm -rf tmp; bundle exec rails s -> run dev version

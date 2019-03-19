@@ -6,3 +6,5 @@
 # api_key: 172d73af3122e6560fae33626f58130741877acfd1a9c8cfd9041a5ebc69fd9b
 # 'Now On' category.id: 12
 # 'Coming Up' category.id: 13
+
+register_asset "stylesheets/landing-page.scss"
