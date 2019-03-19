@@ -1,0 +1,10 @@
+<div class="eventListContainer">
+  <div class="eventListTitle">
+    <span class="listText">{{label}}</span>
+  </div>
+  <div class="eventsContainer">
+    {{#each events as |event| }}
+      {{event-item event=event}}
+    {{/each}}
+  </div>
+</div>
