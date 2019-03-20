@@ -119,6 +119,21 @@ function resolveTopic(topicData) {
   const body = topicData.post_stream.posts[0].cooked;
   
   let title = topicData.fancy_title;
+  /*
+    Example title:
+    A Distinctive NUI Galway - Our distinctive location
+
+    Need to parse out first part
+
+    so: "A Distinctive NUI Galway - Our distinctive location" turns into "Our distinctive location"
+
+  */
+  let tempIndex = title.indexOf('-');
+
+  if(tempIndex > 10) {
+    title = title.substring( tempIndex + 2 ); // +2 because there is a whitespace + - 
+  }
+  
   let startTime = '';
   let endTime = '';
   let urlLink = '';
