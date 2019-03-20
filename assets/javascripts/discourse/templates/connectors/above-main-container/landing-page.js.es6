@@ -4,11 +4,11 @@ import { withPluginApi } from "discourse/lib/plugin-api"
 /***********/
 const apiInfo = [
   { 
-    key: '172d73af3122e6560fae33626f58130741877acfd1a9c8cfd9041a5ebc69fd9b',
-    username: 'dturner'
+    key: '39f810a82325454c449a42b849131b794d0d42f3cffac4e196a243c76c18304c',
+    username: 'ivanbacher'
   },
   { 
-    key: 'afea9cb58122c4ffc9d3d6bc7615cb51028d860c17c9d243bcf16a6dc9acfe75',
+    key: '2a37579c9b1d9de8cb870961a3d4cd06dc24f3390572d07e38084b5d3a099b1f',
     username: 'aoifebrady'
   }
 ];
