@@ -18,8 +18,8 @@ const queryEndpoints = [
   `?api_key=${apiInfo[1].key}&api_username=${apiInfo[1].username}`
 ];
 
-const nowOnId = 12;
-const comingUpId = 13;
+const nowOnId = 5;
+const comingUpId = 6;
 
 let year   = undefined;
 let month  = undefined;
