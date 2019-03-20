@@ -7,4 +7,6 @@
 # 'Now On' category.id: 12
 # 'Coming Up' category.id: 13
 
+enabled_site_setting :nuig_enabled
+
 register_asset "stylesheets/landing-page.scss"

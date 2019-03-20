@@ -15,3 +15,8 @@ Development process
 
 Commands
  - rm -rf tmp; bundle exec rails s -> run dev version
+
+
+misc
+ - using images that are saved in plugin public folder: https://meta.discourse.org/t/is-it-possible-to-include-background-images-with-a-plugin/36298/3
+ - plugin settings page api: https://meta.discourse.org/t/beginners-guide-to-creating-discourse-plugins-part-3-custom-settings/31115

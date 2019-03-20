@@ -1,0 +1,22 @@
+plugins:
+  nuig_enabled:
+    default: true
+    client: true
+  nuig_api_key_1:
+    default: zasdjaksdjaslkdjas
+    client: true
+  nuig_user_api_key_1:
+    default: username-1
+    client: true
+  nuig_api_key_2:
+    default: jjdhauedbiqudbbi
+    client: true
+  nuig_user_api_key_2:
+    default: username-2
+    client: true
+  nuig_now_on_cat_id: 
+    default: 12
+    client: true
+  nuig_comming_up_cat_id:
+    default: 13
+    client: true

@@ -194,6 +194,9 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
 }
 
 function initializePlugin(api, component) {
+
+  
+
   component.set('showLandingPage', true)
   // Show or hide the landing page based on current url
   api.onPageChange((url, title) => {

@@ -1,0 +1,9 @@
+en:
+  site_settings:
+    nuig_enabled: "enable plugin?"
+    nuig_api_key_1: "generated api key 1"
+    nuig_user_api_key_1: "add username for generated api key 1"
+    nuig_api_key_1: "generated api key 1"
+    nuig_user_api_key_1: "add username for generated api key 2"
+    nuig_now_on_cat_id: "id for now on category"
+    nuig_comming_up_cat_id: "id for comming up category"
