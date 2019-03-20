@@ -20,6 +20,7 @@ let hour   = undefined;
 let minute = undefined;
 let second = undefined;
 let newTime = false;
+
 /***********/
 function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
@@ -106,19 +107,23 @@ function initializeClock(id, endtime) {
 }
 
 function resolveTopic(topicData) {
+  
   const body = topicData.post_stream.posts[0].cooked;
+  
   let title = topicData.fancy_title;
-  let startTime = ''
-  let endTime = ''
-  let urlLink = ''
-  let category = ''
-  let speakers = []
-  let lines = body.split('<br>')
+  let startTime = '';
+  let endTime = '';
+  let urlLink = '';
+  let category = '';
+  let speakers = [];
+  let lines = body.split('<br>');
+
   lines.forEach((text) => {
     let line = text
     line = line.replace('<p>', '')
     line = line.replace('</p>', '')
     line = line.trim();
+
     if (line.startsWith('Actual URL==' || line.startsWith('URL==') || line.startsWith('url=='))) {
       urlLink = line.split('==')[1].trim();
     } else if (line.startsWith('Start Time==') || line.startsWith('start time==')) {
@@ -134,13 +139,17 @@ function resolveTopic(topicData) {
       }
     }
   });
-  let result = {}
+
+
+  let result = {};
+
   result.title = title;
   result.url = urlLink
   result.startTime = startTime
   result.endTime = endTime
   result.speakers = speakers
   result.category = category
+  
   return result;
 }
 
