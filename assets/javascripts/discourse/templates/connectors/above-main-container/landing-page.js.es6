@@ -2,16 +2,24 @@ import { withPluginApi } from "discourse/lib/plugin-api"
 
 // Value are unique to each discourse instance
 /***********/
-const apiKey = '172d73af3122e6560fae33626f58130741877acfd1a9c8cfd9041a5ebc69fd9b'
-const username = 'dturner';
-const queryEnd = `?api_key=${apiKey}&api_username=${username}`
+const apiInfo = [
+  { 
+    key: '172d73af3122e6560fae33626f58130741877acfd1a9c8cfd9041a5ebc69fd9b',
+    username: 'dturner'
+  },
+  { 
+    key: 'afea9cb58122c4ffc9d3d6bc7615cb51028d860c17c9d243bcf16a6dc9acfe75',
+    username: 'aoifebrady'
+  }
+];
 
-const apiKey1 = 'afea9cb58122c4ffc9d3d6bc7615cb51028d860c17c9d243bcf16a6dc9acfe75'
-const username1 = 'aoifebrady';
-const queryEnd1 = `?api_key=${apiKey1}&api_username=${username1}`
+const queryEndpoints = [
+  `?api_key=${apiInfo[0].key}&api_username=${apiInfo[0].username}`,
+  `?api_key=${apiInfo[1].key}&api_username=${apiInfo[1].username}`
+];
 
-const nowOnId = 12
-const comingUpId = 13
+const nowOnId = 12;
+const comingUpId = 13;
 
 let year   = undefined;
 let month  = undefined;
@@ -194,22 +202,22 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
 }
 
 function initializePlugin(api, component) {
-
-  
-
   component.set('showLandingPage', true)
   // Show or hide the landing page based on current url
   api.onPageChange((url, title) => {
     if (url == '/' || url == '/categories') {
-      updateLandingPage(component, nowOnId, 'liveEvents', queryEnd)
-      updateLandingPage(component, comingUpId, 'nextEvents', queryEnd1)
-      component.set('showLandingPage', true)
+      const endpointLive = queryEndpoints[Math.floor(Math.random() * queryEndpoints.length)];
+      const endpointNext = queryEndpoints[Math.floor(Math.random() * queryEndpoints.length)];
+
+      updateLandingPage(component, nowOnId, 'liveEvents', endpointLive);
+      updateLandingPage(component, comingUpId, 'nextEvents', endpointNext);
+      component.set('showLandingPage', true);
       let deadline = new Date(Date.UTC(year || 2019, month || 2, day || 7, hour || 8, minute || 0, second || 0));
       setTimeout(function() {
         initializeClock('clockdiv', deadline);
       }, 500);
     } else {
-      component.set('showLandingPage', false)
+      component.set('showLandingPage', false);
     }
   });
 
