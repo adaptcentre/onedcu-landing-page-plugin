@@ -152,10 +152,13 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
   */
 
   // Get the Now On list and update the template
-  fetch(`/c/${eventId}.json${qEnd}`)
+  
+  //fetch(`/c/${eventId}.json${qEnd}`)
+  fetch(`/c/${eventId}.json`)
   .then((res) => {
     return res.json();
-  }).then((data) => {
+  })
+  .then((data) => {
     if (data && data.topic_list) {
       const topics = data.topic_list.topics;
       const topicArray = [];
@@ -165,7 +168,9 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
         // if the topic is open and isn't the default 'About the...' topic make a new request
         if (!(topics[i].title.startsWith('About the')) && topics[i].closed === false) {
           topicArray.push(topics[i]);
-          const p1 = fetch(`/t/${topics[i].id}.json${qEnd}`);
+          //const p1 = fetch(`/t/${topics[i].id}.json${qEnd}`);
+          const p1 = fetch(`/t/${topics[i].id}.json`);
+
           topicPromiseArr.push(p1);
         }
       }
@@ -175,13 +180,16 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
     } else {
       return [];
     }
-  }).then((topicDataArray) => {
+  })
+  .then((topicDataArray) => {
     // return topicDataArray.forEach(topicData => resolveTopic(topicData))
     const resultsData = topicDataArray.map(topicData => resolveTopic(topicData))
     return resultsData;
-  }).then((finalTopicData) => {
+  })
+  .then((finalTopicData) => {
     component.set(eventLabel, finalTopicData)
-  }).catch((e) => {
+  })
+  .catch((e) => {
     console.log('A "updateLandingPage()" error occurred: ');
     console.log(e);
   });
@@ -196,10 +204,10 @@ function initializePlugin(api, component) {
 
   // ----------------------------------------------------
 
-  component.set('showLandingPage', true)
+  component.set('showLandingPage', true);
   
   // Show or hide the landing page based on current url
-  api.onPageChange((url, title) => {
+  api.onPageChange( (url, title) => {
 
    /*
       API key + user information
@@ -217,7 +225,6 @@ function initializePlugin(api, component) {
 
     const nowOnId = component.siteSettings.nuig_now_on_cat_id;
     const comingUpId = component.siteSettings.nuig_comming_up_cat_id;
-
 
     const queryEndpoints = [
       `?api_key=${apiKey_1}&api_username=${apiKeyUser_1}`,
