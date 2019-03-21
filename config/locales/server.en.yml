@@ -7,3 +7,4 @@ en:
     nuig_user_api_key_1: "add username for generated api key 2"
     nuig_now_on_cat_id: "id for now on category"
     nuig_comming_up_cat_id: "id for comming up category"
+    nuig_deadline: "when is the event - format is year/month/day hour:min:sec"

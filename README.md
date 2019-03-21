@@ -2,6 +2,11 @@
 Imagine NUI Galway Landing Page
 
 ---
+
+API keys and category id's can now be changed in the admin interface of the main discourse application (plugin/settings). They can also be changed in /config/settings.yml. Default options are hardcoded, but and are typically unique to each discourse instance.
+
+---
+
 Discourse github repo: https://github.com/discourse/discourse
 
 Development process:

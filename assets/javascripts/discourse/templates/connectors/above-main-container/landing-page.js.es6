@@ -1,16 +1,6 @@
 import { withPluginApi } from "discourse/lib/plugin-api"
 
-// the deadline is: 28.03.19 - 11:00
-const deadline = new Date("2019/03/28 11:00:00");
-
-let year   = 2019;
-let month  = 3;
-let day    = 28;
-let hour   = 11;
-let minute = 0;
-let second = 0;
-
-let newTime = false;
+// ---- ---- ---- ---- ---- ---- ---- ----
 
 function getTimeRemaining(endtime) {
   
@@ -25,18 +15,13 @@ function getTimeRemaining(endtime) {
       'seconds': 0
     };
   }
-  
-  let seconds = Math.floor((t / 1000) % 60);
-  let minutes = Math.floor((t / 1000 / 60) % 60);
-  let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-  let days = Math.floor(t / (1000 * 60 * 60 * 24));
-  
+    
   return {
     'total': t,
-    'days': days,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
+    'days': Math.floor(t / (1000 * 60 * 60 * 24)),
+    'hours': Math.floor((t / (1000 * 60 * 60)) % 24),
+    'minutes': Math.floor((t / 1000 / 60) % 60),
+    'seconds': Math.floor((t / 1000) % 60)
   };
 }
 
@@ -49,24 +34,21 @@ function initializeClock(id, endtime) {
   var secondsSpan = clock.querySelector('.seconds');
 
   function updateClock() {
-    if (newTime) {
-      endtime = new Date(year, month, day, hour, minute, second);
-      newTime = false;
-    }
+    
+    let timeRemaining = getTimeRemaining(endtime);
 
-    var t = getTimeRemaining(endtime);
-
-    var dayValue = ('0' + t.days).slice(-2);
+    let dayValue = ('0' + timeRemaining.days).slice(-2);
     daysSpan.innerHTML = dayValue;
 
-    var hourValue = ('0' + t.hours).slice(-2);
-    hoursSpan.innerHTML = hourValue
+    let hourValue = ('0' + timeRemaining.hours).slice(-2);
+    hoursSpan.innerHTML = hourValue;
 
-    var minuteValue = ('0' + t.minutes).slice(-2);
+    let minuteValue = ('0' + timeRemaining.minutes).slice(-2);
     minutesSpan.innerHTML = minuteValue;
 
-    var secondValue = ('0' + t.seconds).slice(-2);
-    secondsSpan.innerHTML = secondValue
+    let secondValue = ('0' + timeRemaining.seconds).slice(-2);
+    secondsSpan.innerHTML = secondValue;
+
     if (dayValue == '01') {
       daysSpan.nextElementSibling.innerHTML = "Day";
     } else if (dayValue == '00'){
@@ -93,7 +75,7 @@ function initializeClock(id, endtime) {
       secondsSpan.nextElementSibling.innerHTML = "Seconds"
     }
 
-    if (t.total <= 0) {
+    if (timeRemaining.total <= 0) {
       clearInterval(timeinterval);
     }
   }
@@ -205,30 +187,12 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
   });
 }
 
+
+
+// ---- ---- ---- ---- ---- ---- ---- ----
+// ---- ---- ---- ---- ---- ---- ---- ----
+
 function initializePlugin(api, component) {
-
-  /*
-    API key + user information
-    --------------------------
-    
-    For the pulgin to function correctly, we need user api keys. These are created within the admin interface of the discourse app.
-    Once created, they can be hard coded in the files /config/settings.yml. Or they can also be changed used the admin interface of the discourse app
-  */
-
-  const apiKey_1 = component.siteSettings.nuig_api_key_1;
-  const apiKeyUser_1 = component.siteSettings.nuig_user_api_key_1;
-
-  const apiKey_2 = component.siteSettings.nuig_api_key_2;
-  const apiKeyUser_2 = component.siteSettings.nuig_user_api_key_2;
-
-  const nowOnId = component.siteSettings.nuig_now_on_cat_id;
-  const comingUpId = component.siteSettings.nuig_comming_up_cat_id;
-
-
-  const queryEndpoints = [
-    `?api_key=${apiKey_1}&api_username=${apiKeyUser_1}`,
-    `?api_key=${apiKey_2}&api_username=${apiKeyUser_2}`
-  ];
 
   // ----------------------------------------------------
 
@@ -236,7 +200,34 @@ function initializePlugin(api, component) {
   
   // Show or hide the landing page based on current url
   api.onPageChange((url, title) => {
-    
+
+   /*
+      API key + user information
+      --------------------------
+      
+      For the pulgin to function correctly, we need user api keys. These are created within the admin interface of the discourse app.
+      Once created, they can be hard coded in the files /config/settings.yml. Or they can also be changed used the admin interface of the discourse app
+    */
+
+    const apiKey_1 = component.siteSettings.nuig_api_key_1;
+    const apiKeyUser_1 = component.siteSettings.nuig_user_api_key_1;
+
+    const apiKey_2 = component.siteSettings.nuig_api_key_2;
+    const apiKeyUser_2 = component.siteSettings.nuig_user_api_key_2;
+
+    const nowOnId = component.siteSettings.nuig_now_on_cat_id;
+    const comingUpId = component.siteSettings.nuig_comming_up_cat_id;
+
+
+    const queryEndpoints = [
+      `?api_key=${apiKey_1}&api_username=${apiKeyUser_1}`,
+      `?api_key=${apiKey_2}&api_username=${apiKeyUser_2}`
+    ];
+
+    const deadline = new Date(component.siteSettings.nuig_deadline);
+
+    // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
     if (url === '/' || url === '/categories') {
       
       const endpointLive = queryEndpoints[ Math.floor( Math.random() * queryEndpoints.length ) ];
@@ -246,19 +237,34 @@ function initializePlugin(api, component) {
       updateLandingPage(component, comingUpId, 'nextEvents', endpointNext);
       
       component.set('showLandingPage', true);
-      
-      let deadline = new Date( Date.UTC( year || 2019, month || 2, day || 7, hour || 8, minute || 0, second || 0 ) );
-      
-      setTimeout(function() {
-        initializeClock('clockdiv', deadline);
-      }, 500);
 
+      //do we need to show the countdown clock?
+      if( new Date() >= deadline ) {
+        // no we do not need to show it
+        console.log('hiding countdown and showing events!');
+
+        document.querySelector('.clockMain').style.display = 'none';
+        document.querySelector('.eventsWrapper').style.display = 'flex';
+      } else {
+        // Yes we do need to show it
+        console.log('showing countdown and hiding events!');
+
+        document.querySelector('.clockMain').style.display = 'block';
+        document.querySelector('.eventsWrapper').style.display = 'none';
+
+        setTimeout(function() {
+          initializeClock('clockdiv', deadline);
+        }, 500);
+      }
+  
     } else {
       component.set('showLandingPage', false);
     }
   });
-
 }
+
+// ---- ---- ---- ---- ---- ---- ---- ----
+// ---- ---- ---- ---- ---- ---- ---- ----
 
 export default {
   setupComponent(args, component) {
