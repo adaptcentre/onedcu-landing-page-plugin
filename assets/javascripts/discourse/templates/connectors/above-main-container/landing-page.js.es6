@@ -254,16 +254,22 @@ function initializePlugin(api, component) {
         // no we do not need to show it
         console.log('hiding countdown and showing events!');
 
-        document.querySelector('.clockMain').style.display = 'none';
-        document.querySelector('.eventsWrapper').style.display = 'flex';
+        // give DOM time to load
+        setTimeout(function() {
+          document.querySelector('.clockMain').style.display = 'none';
+          document.querySelector('.eventsWrapper').style.display = 'flex';
+          
+          initializeClock('clockdiv', deadline);
+        }, 500);
       } else {
         // Yes we do need to show it
         console.log('showing countdown and hiding events!');
 
-        document.querySelector('.clockMain').style.display = 'block';
-        document.querySelector('.eventsWrapper').style.display = 'none';
-
+        // give DOM time to load
         setTimeout(function() {
+          document.querySelector('.clockMain').style.display = 'block';
+          document.querySelector('.eventsWrapper').style.display = 'none';
+
           initializeClock('clockdiv', deadline);
         }, 500);
       }
