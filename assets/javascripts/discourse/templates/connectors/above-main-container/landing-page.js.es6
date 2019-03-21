@@ -152,30 +152,33 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
   */
 
   // Get the Now On list and update the template
-  
-  //fetch(`/c/${eventId}.json${qEnd}`)
-  fetch(`/c/${eventId}.json`)
-  .then((res) => {
+
+  fetch(`/c/${eventId}.json${qEnd}`)
+  .then( (res) => {
     return res.json();
   })
   .then((data) => {
+    
     if (data && data.topic_list) {
+      
       const topics = data.topic_list.topics;
       const topicArray = [];
       const topicPromiseArr = [];
+
       // for each topic (metadata) that is open in the topic_list get the actual topic text
       for (let i = 0; i < topics.length; i += 1) {
         // if the topic is open and isn't the default 'About the...' topic make a new request
         if (!(topics[i].title.startsWith('About the')) && topics[i].closed === false) {
           topicArray.push(topics[i]);
-          //const p1 = fetch(`/t/${topics[i].id}.json${qEnd}`);
-          const p1 = fetch(`/t/${topics[i].id}.json`);
-
+          
+          const p1 = fetch(`/t/${topics[i].id}.json${qEnd}`
+  
           topicPromiseArr.push(p1);
         }
       }
+
       return Promise.all(topicPromiseArr).then((topicResponses) => {
-        return Promise.all(topicResponses.map(singleTopicResponse => singleTopicResponse.json()))
+        return Promise.all( topicResponses.map( singleTopicResponse => singleTopicResponse.json() ) );
       })
     } else {
       return [];
