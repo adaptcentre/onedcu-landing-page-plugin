@@ -26,7 +26,9 @@ Misc:
  - using images that are saved in plugin public folder: https://meta.discourse.org/t/is-it-possible-to-include-background-images-with-a-plugin/36298/3
  - plugin settings page api: https://meta.discourse.org/t/beginners-guide-to-creating-discourse-plugins-part-3-custom-settings/31115
  - install plugin on production server: https://meta.discourse.org/t/install-plugins-in-discourse/19157
+ - sending builk email invites: https://meta.discourse.org/t/sending-bulk-user-invites/16468
 
 
  Notes:
  	- The API keys are currently hardcoded. Site settings have been added but they are not linked in the code yet.
+ 	- API KEY SECURITY issue -> create new group and generate API keys?
