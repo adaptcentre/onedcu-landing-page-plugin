@@ -6,5 +6,4 @@
 
 enabled_site_setting :nuig_enabled
 
-register_asset "javascripts/vendor/async.min.js"
 register_asset "stylesheets/landing-page.scss"

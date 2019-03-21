@@ -1,8 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 
-
-console.log(async.queue)
-
 // ---- ---- ---- ---- ---- ---- ---- ----
 
 function getTimeRemaining(endtime) {
@@ -168,6 +165,7 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
       const topicArray = [];
       const topicPromiseArr = [];
 
+      let tempSeries = [];
       // for each topic (metadata) that is open in the topic_list get the actual topic text
       for (let i = 0; i < topics.length; i += 1) {
         // if the topic is open and isn't the default 'About the...' topic make a new request
