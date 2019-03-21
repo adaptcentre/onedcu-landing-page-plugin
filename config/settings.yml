@@ -3,20 +3,20 @@ plugins:
     default: true
     client: true
   nuig_api_key_1:
-    default: zasdjaksdjaslkdjas
+    default: 39f810a82325454c449a42b849131b794d0d42f3cffac4e196a243c76c18304c
     client: true
   nuig_user_api_key_1:
-    default: username-1
+    default: ivanbacher
     client: true
   nuig_api_key_2:
-    default: jjdhauedbiqudbbi
+    default: 2a37579c9b1d9de8cb870961a3d4cd06dc24f3390572d07e38084b5d3a099b1f
     client: true
   nuig_user_api_key_2:
-    default: username-2
+    default: aoifebrady
     client: true
   nuig_now_on_cat_id: 
-    default: 12
+    default: 5
     client: true
   nuig_comming_up_cat_id:
-    default: 13
+    default: 6
     client: true
