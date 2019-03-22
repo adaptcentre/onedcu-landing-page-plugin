@@ -258,8 +258,7 @@ function initializePlugin(api, component) {
         // give DOM time to load
         setTimeout(function() {
           hideClockShowEvents();
-          
-          initializeClock('clockdiv', deadline);
+          //initializeClock('clockdiv', deadline);
         }, 500);
       } else {
         // Yes we do need to show it
