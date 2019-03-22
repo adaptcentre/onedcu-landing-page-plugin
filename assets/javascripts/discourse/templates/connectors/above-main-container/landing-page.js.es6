@@ -77,6 +77,7 @@ function initializeClock(id, endtime) {
 
     if (timeRemaining.total <= 0) {
       clearInterval(timeinterval);
+      hideClockShowEvents();
     }
   }
 
@@ -256,8 +257,7 @@ function initializePlugin(api, component) {
 
         // give DOM time to load
         setTimeout(function() {
-          document.querySelector('.clockMain').style.display = 'none';
-          document.querySelector('.eventsWrapper').style.display = 'flex';
+          hideClockShowEvents();
           
           initializeClock('clockdiv', deadline);
         }, 500);
@@ -267,9 +267,7 @@ function initializePlugin(api, component) {
 
         // give DOM time to load
         setTimeout(function() {
-          document.querySelector('.clockMain').style.display = 'block';
-          document.querySelector('.eventsWrapper').style.display = 'none';
-
+          showClockHideEvents();
           initializeClock('clockdiv', deadline);
         }, 500);
       }
@@ -278,6 +276,16 @@ function initializePlugin(api, component) {
       component.set('showLandingPage', false);
     }
   });
+}
+
+function showClockHideEvents() {
+  document.querySelector('.clockMain').style.display = 'block';
+  document.querySelector('.eventsWrapper').style.display = 'none';
+}
+
+function hideClockShowEvents() {
+   document.querySelector('.clockMain').style.display = 'none';
+   document.querySelector('.eventsWrapper').style.display = 'flex';        
 }
 
 // ---- ---- ---- ---- ---- ---- ---- ----
