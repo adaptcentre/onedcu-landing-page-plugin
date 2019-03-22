@@ -110,6 +110,7 @@ function resolveTopic(topicData) {
   let urlLink = '';
   let category = '';
   let speakers = [];
+  let bg_col = '';
   let lines = body.split('<br>');
 
   lines.forEach((text) => {
@@ -131,6 +132,8 @@ function resolveTopic(topicData) {
       if (speakers.length === 1 && speakers[0] === '') {
         speakers = []
       }
+    } else if (line.startsWith('Cat-bg==') || line.startsWith('Cat-bg==')) {
+      bg_col = line.split('==')[1].trim()
     }
   });
 
@@ -143,6 +146,7 @@ function resolveTopic(topicData) {
   result.endTime = endTime
   result.speakers = speakers
   result.category = category
+  result.bg_col = bg_col;
   
   return result;
 }
