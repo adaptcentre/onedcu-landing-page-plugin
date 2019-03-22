@@ -14,6 +14,20 @@
     max-width: 75%;
 }
 
+/* */
+
+.highlight-text-color {
+    color: #49a6ae;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.margin-bottom-50 {
+    margin-bottom: 50px;
+}
+
 /* Clock stuff */
 
 .clockMain {
@@ -90,7 +104,7 @@
 }
 
 .eventsWrapper {
-    display: flex;
+    display: none; /* was flex */
     justify-content: space-between;
 }
 
