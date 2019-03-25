@@ -3,25 +3,26 @@
 <div id="landing-page-plugin-container">
 
   <!-- MEDIA -->
-  <div class="grid-center">
-    <div class="col-10_xs-12 custom-slideshow">
-      <!-- 
-        <img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/Imagine_logo_Eng_2.png" alt="Holding image" />
-      -->
+  <div class="grid-center media-main">
+    <div class="col-10_xs-12" id="custom-slideshow">
+      
       <div>
-        <img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/carousel_2.png">
+        <img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/carousel_1.png" />
       </div>
-      <div>
-        <img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/carousel_3.png">
+
+      <div class="no-display">
+        <img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/carousel_2.png" />
       </div>
-      <div>
-        <img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/carousel_1.png">
+      
+      <div class="no-display">
+        <img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/carousel_3.png" />
       </div>
+
     </div>
   </div>
 
   <!-- Clock -->
-  <div class="grid clock-main">
+  <div class="grid clock-main no-display">
     <div class="col">
         <div class="text-center">
           <h1 class="highlight-text-color"> On Thursday 28 March... </h1>
@@ -87,7 +88,7 @@
   </div>
 
   <!-- Events -->
-  <div class="grid events-main">
+  <div class="grid events-main no-display">
     <!-- Now On -->
     <div class="col-4_xs-12_sm-6">
       {{event-list events=liveEvents label="Now On"}}

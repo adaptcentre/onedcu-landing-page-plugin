@@ -17,18 +17,26 @@
 *
 */
 
+.media-main {
+  margin-bottom: 50px;
+}
+
 .landing-media {
   width: 100%;
 }
 
-.custom-slideshow {
+#custom-slideshow {
   position: relative;
-  min-height: 500px;
+  height: 500px;
 }
 
-.custom-slideshow > div { 
+#custom-slideshow > div { 
   position: absolute;
   width: 100%; 
+}
+
+.no-display {
+  display: none;
 }
 
 /*
@@ -68,10 +76,6 @@
 
 
 /* Clock stuff */
-
-.clockMain {
-    display: none;
-}
 
 .clockWrapper {
     display: flex;
@@ -119,12 +123,6 @@
 
 .pdfButton:hover{
     background: darken(#00a8b0, 5%);
-}
-
-
-
-.events-main {
-  display: none;
 }
 
 .eventLink {

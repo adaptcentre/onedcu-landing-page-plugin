@@ -199,7 +199,7 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
   .then((finalTopicData) => {
     component.set(eventLabel, finalTopicData)
   })
-  .catch((e) => {
+  .catch( (e) => {
     console.log('A "updateLandingPage()" error occurred: ');
     console.log(e);
   });
@@ -282,7 +282,11 @@ function initializePlugin(api, component) {
   });
 
   //start slideshow
-  startSlideshow()
+  //need to wait for DOM to load
+  setTimeout( function() {
+    startSlideshow()  
+  }, 500);
+  
 }
 
 function showClockHideEvents() {
@@ -297,20 +301,46 @@ function hideClockShowEvents() {
 
 function startSlideshow() {
   //https://css-tricks.com/snippets/jquery/simple-auto-playing-slideshow/
+  console.log('starting slideshow')
+  if(slideshowInterval === null) {
+    let duration = 5000;
 
-  if(!slideshowInterval) {
-
-    $('.custom-slideshow > div:gt(0)').hide();
-
-    slideshowInterval = setInterval( function() { 
-      $('.custom-slideshow > div:first')
-        .fadeOut(2500)
+    $('#custom-slideshow div:gt(0)').removeClass('no-display');
+    $('#custom-slideshow div:gt(0)').hide();
+    
+    setInterval(function() {
+      $('#custom-slideshow > div:first')
+        .fadeOut(1000)
         .next()
-        .fadeIn(2500)
+        .fadeIn(1000)
         .end()
-        .appendTo('.custom-slideshow');
-    },  5000);
+        .appendTo('#custom-slideshow');
+    }, duration); 
   }
+}
+
+// ---- ---- ---- ---- ---- ---- ---- ----
+// ---- ---- ---- ---- ---- ---- ---- ----
+
+// Code for img slider -> to calculate correct height and init slider
+
+$( window ).resize( () => {
+  calcImgHeight();
+});
+$( document ).ready( () => {
+  calcImgHeight();
+});
+
+function calcImgHeight() {
+  let imgHeight = 0;
+
+  $('#custom-slideshow img').each( (index, value) => {
+    let tempH = $(value).height();
+
+    imgHeight = Math.max(tempH, imgHeight);
+
+    $('#custom-slideshow').css('height', imgHeight + 'px');
+  });
 }
 
 // ---- ---- ---- ---- ---- ---- ---- ----
