@@ -1,6 +1,7 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 
 // ---- ---- ---- ---- ---- ---- ---- ----
+let slideshowInterval = null;
 
 function getTimeRemaining(endtime) {
   
@@ -279,6 +280,9 @@ function initializePlugin(api, component) {
       component.set('showLandingPage', false);
     }
   });
+
+  //start slideshow
+  startSlideshow()
 }
 
 function showClockHideEvents() {
@@ -289,6 +293,24 @@ function showClockHideEvents() {
 function hideClockShowEvents() {
    document.querySelector('.clock-main').style.display = 'none';
    document.querySelector('.events-main').style.display = 'flex';        
+}
+
+function startSlideshow() {
+  //https://css-tricks.com/snippets/jquery/simple-auto-playing-slideshow/
+
+  if(!slideshowInterval) {
+
+    $('.custom-slideshow > div:gt(0)').hide();
+
+    slideshowInterval = setInterval( function() { 
+      $('.custom-slideshow > div:first')
+        .fadeOut(2500)
+        .next()
+        .fadeIn(2500)
+        .end()
+        .appendTo('.custom-slideshow');
+    },  5000);
+  }
 }
 
 // ---- ---- ---- ---- ---- ---- ---- ----

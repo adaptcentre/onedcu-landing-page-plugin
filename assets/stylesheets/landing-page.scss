@@ -21,6 +21,15 @@
   width: 100%;
 }
 
+.custom-slideshow {
+  position: relative;
+  min-height: 500px;
+}
+
+.custom-slideshow > div { 
+  position: absolute;
+  width: 100%; 
+}
 
 /*
 *  
