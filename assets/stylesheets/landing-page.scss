@@ -61,7 +61,6 @@
 /* Clock stuff */
 
 .clockMain {
-    margin-bottom: 80px;
     display: none;
 }
 
@@ -113,6 +112,12 @@
     background: darken(#00a8b0, 5%);
 }
 
+
+
+.events-main {
+  display: none;
+}
+
 .eventLink {
     padding: 10px 0;
     color: initial;
@@ -144,29 +149,6 @@
 /* 
     MEDIA QUERIES
 */
-
-@media (max-width: 400px) {
-  .eventsWrapper {
-    display: block;
-  }
-  .timeNumber {
-      font-size: 3em;
-  }
-  .clockSeparator {
-      font-size: 3em;
-  }
-}
-
-.eventListWrapper {
-    col: 1;
-    width: 32%;
-}
-
-@media (max-width: 400px) {
-  .eventListWrapper {
-    width: initial;
-  }
-}
 
 .eventsContainer .ember-view:not(:first-child) {
     position: relative;

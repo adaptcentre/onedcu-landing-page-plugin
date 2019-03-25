@@ -282,13 +282,13 @@ function initializePlugin(api, component) {
 }
 
 function showClockHideEvents() {
-  document.querySelector('.clockMain').style.display = 'block';
-  document.querySelector('.eventsWrapper').style.display = 'none';
+  document.querySelector('.clock-main').style.display = 'flex';
+  document.querySelector('.events-main').style.display = 'none';
 }
 
 function hideClockShowEvents() {
-   document.querySelector('.clockMain').style.display = 'none';
-   document.querySelector('.eventsWrapper').style.display = 'flex';        
+   document.querySelector('.clock-main').style.display = 'none';
+   document.querySelector('.events-main').style.display = 'flex';        
 }
 
 // ---- ---- ---- ---- ---- ---- ---- ----
