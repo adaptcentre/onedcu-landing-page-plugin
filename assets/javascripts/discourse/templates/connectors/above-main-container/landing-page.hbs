@@ -1,113 +1,120 @@
 {{#if showLandingPage}}
-<div class="landingMain">
-  
-  <!-- HOLDING IMAGE -->
-  <div class="multimedia">
-    <img class="landingMedia top-img-langing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/Imagine_logo_Eng_2.png" alt="Holding image" />
-    <img class="landingMedia" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/Imagine_logo_Irish_2.png" alt="Holding image" />
-  </div>
 
+<div id="landing-page-plugin-container">
 
-  <!-- CLOCK -->
-  <div class="clockMain">
-
-    <!-- -->
-    <div class="text-center">
-      <h1 class="highlight-text-color"> On Thursday 28 March... </h1>
-
-      <p>
-        ...we want you to join us for a discussion about the future of our University.
-      </p>
-
-      <p>
-        Imagine NUI Galway is an online discussion forum that will run from 11am-midnight on Thursday 28 March. It will be open to students, staff, alumni and the general public - anyone who has an interest in how our University's develops and succeeds over the coming years.
-      </p>
-      <p>
-        
-      </p>
-
-      <h3 class="highlight-text-color">
-        Schedule of Discussions
-      </h3>
-
-      <p>
-        You can see a full list of discussions on our <a href="http://www.nuigalway.ie/imagine/schedule/">Schedule</a> page here.
-      </p>
-      <p>
-        Please put a note in your diary, and bookmark the website: <a href="imagine.nuigalway.ie">imagine.nuigalway.ie</a>
-      </p>
-    </div>
-
-
-    <div class="clockWrapper" id="clockdiv">
-      
-      <div class="timeWrapper daysWrapper">
-        <span class="days timeNumber">00</span>
-        <div class="smalltext">Days</div>
-      </div>
-
-      <div class="separatorWrapper">
-        <span class="clockSeparator">&#58;</span>
-      </div>
-      
-      <div class="timeWrapper hoursWrapper">
-        <span class="hours timeNumber">0</span>
-        <div class="smalltext">Hours</div>
-      </div>
-      
-      <div class="separatorWrapper">
-        <span class="clockSeparator">&#58;</span>
-      </div>
-
-      <div class="timeWrapper minutesWrapper">
-        <span class="minutes timeNumber">0</span>
-        <div class="smalltext">Minutes</div>
-      </div>
-      
-      <div class="separatorWrapper">
-        <span class="clockSeparator">&#58;</span>
-      </div>
-
-      <div class="timeWrapper secondsWrapper">
-        <span class="seconds timeNumber">0</span>
-        <div class="smalltext">Seconds</div>
-      </div>
+  <!-- MEDIA -->
+  <div class="grid-center">
+    <div class="col-10">
+      <img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/Imagine_logo_Eng_2.png" alt="Holding image" />
     </div>
   </div>
 
+  <!-- Clock -->
+  <div class="grid">
+    <div class="col">
+      <div class="clockMain">
+        <div class="text-center">
+          <h1 class="highlight-text-color"> On Thursday 28 March... </h1>
 
-  <!-- EVENTS -->
-  <div class="eventsWrapper">
-    <div class="eventListWrapper">
+          <p>
+            ...we want you to join us for a discussion about the future of our University.
+          </p>
+
+          <p>
+            Imagine NUI Galway is an online discussion forum that will run from 11am-midnight on Thursday 28 March. It will be open to students, staff, alumni and the general public - anyone who has an interest in how our University's develops and succeeds over the coming years.
+          </p>
+          <p>
+            
+          </p>
+
+          <h3 class="highlight-text-color">
+            Schedule of Discussions
+          </h3>
+
+          <p>
+            You can see a full list of discussions on our <a href="http://www.nuigalway.ie/imagine/schedule/">Schedule</a> page here.
+          </p>
+          <p>
+            Please put a note in your diary, and bookmark the website: <a href="imagine.nuigalway.ie">imagine.nuigalway.ie</a>
+          </p>
+        </div>
+
+
+        <div class="clockWrapper" id="clockdiv">
+          
+          <div class="timeWrapper daysWrapper">
+            <span class="days timeNumber">00</span>
+            <div class="smalltext">Days</div>
+          </div>
+
+          <div class="separatorWrapper">
+            <span class="clockSeparator">&#58;</span>
+          </div>
+          
+          <div class="timeWrapper hoursWrapper">
+            <span class="hours timeNumber">0</span>
+            <div class="smalltext">Hours</div>
+          </div>
+          
+          <div class="separatorWrapper">
+            <span class="clockSeparator">&#58;</span>
+          </div>
+
+          <div class="timeWrapper minutesWrapper">
+            <span class="minutes timeNumber">0</span>
+            <div class="smalltext">Minutes</div>
+          </div>
+          
+          <div class="separatorWrapper">
+            <span class="clockSeparator">&#58;</span>
+          </div>
+
+          <div class="timeWrapper secondsWrapper">
+            <span class="seconds timeNumber">0</span>
+            <div class="smalltext">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Events -->
+  <div class="grid">
+    <!-- Now On -->
+    <div class="col-4_xs-12_sm-6">
       {{event-list events=liveEvents label="Now On"}}
     </div>
-    
-    <div class="eventListWrapper">
+
+    <!-- Comming up -->
+    <div class="col-4_xs-12_sm-6">
       {{event-list events=nextEvents label="Coming Up"}}
     </div>
 
-
-    <div class="eventListWrapper otherWrapper">
+    <!-- Buttons + twitter -->
+    <div class="col-4_xs-12_sm-12">
       <div class="otherItemList">
-        <div class="pdfButton scheduleButton">
-          <!-- <a href="/uploads/default/original/1X/ddd2f0700e8631c8824cd86982aa97b0a9015e67.pdf" -->
-          <a href="http://www.nuigalway.ie/imagine/schedule/" target="_blank" class="landingButton scheduleButton">Schedule of Discussions</a>
+          <div class="pdfButton scheduleButton">
+            <!-- <a href="/uploads/default/original/1X/ddd2f0700e8631c8824cd86982aa97b0a9015e67.pdf" -->
+            <a href="http://www.nuigalway.ie/imagine/schedule/" target="_blank" class="landingButton scheduleButton">Schedule of Discussions</a>
+          </div>
+          <div class="pdfButton aboutButton">
+            <!-- <a href="/uploads/default/original/1X/ddd2f0700e8631c8824cd86982aa97b0a9015e67.pdf" -->
+            <a href="http://www.nuigalway.ie/" target="_blank" class="landingButton aboutButton">FAQ</a>
+          </div>
+          <div class="pdfButton aboutButton">
+            <!-- <a href="/uploads/default/original/1X/ddd2f0700e8631c8824cd86982aa97b0a9015e67.pdf" -->
+            <a href="http://www.nuigalway.ie/" target="_blank" class="landingButton aboutButton">About NUI Galway</a>
+          </div>
+          <a
+            class="twitter-timeline"
+            href="https://twitter.com/nuigalway"
+            data-height="500">Tweets by NUI Galway</a>
+          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
-        <div class="pdfButton aboutButton">
-          <!-- <a href="/uploads/default/original/1X/ddd2f0700e8631c8824cd86982aa97b0a9015e67.pdf" -->
-          <a href="http://www.nuigalway.ie/" target="_blank" class="landingButton aboutButton">FAQ</a>
-        </div>
-        <div class="pdfButton aboutButton">
-          <!-- <a href="/uploads/default/original/1X/ddd2f0700e8631c8824cd86982aa97b0a9015e67.pdf" -->
-          <a href="http://www.nuigalway.ie/" target="_blank" class="landingButton aboutButton">About NUI Galway</a>
-        </div>
-        <a
-          class="twitter-timeline"
-          href="https://twitter.com/nuigalway"
-          data-height="500">Tweets by NUI Galway</a>
-        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
     </div>
   </div>
+
+
 </div>
+
 {{/if}}

@@ -6,4 +6,5 @@
 
 enabled_site_setting :nuig_enabled
 
+register_asset "stylesheets/gridlex.min.css"
 register_asset "stylesheets/landing-page.scss"

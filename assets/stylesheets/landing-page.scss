@@ -3,58 +3,39 @@
 	 - #00a8b0
 */
 
-.landingMain {
-    margin-bottom: 30px;
+
+/* MAIN CONTAINER */
+.landing-page-plugin-container {
+  margin-bottom: 30px;
 }
 
 
-.multimedia {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 
-  position: relative;
-  min-height: 450px;
-  overflow: hidden;
+/*
+*  
+*  LANDING MEDIA START
+*
+*/
 
-  margin-bottom: 50px;
+.landing-media {
+  width: 100%;
 }
 
 
-@keyframes cf3FadeInOut {
-  0% {
-    opacity:1;
-  }
-  45% {
-    opacity:1;
-  }
-  55% {
-    opacity:0;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-.top-img-langing-media {
-  animation-name: cf3FadeInOut;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-duration: 8s;
-  animation-direction: alternate;
-}
+/*
+*  
+*  LANDING MEDIA END
+*
+*/
 
 
-.landingMedia {
-  position: absolute;
-  max-width: 75%;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-}
 
-/* */
+
+/*
+*  
+*  HELPER CLASSES START
+*
+*/
 
 .highlight-text-color {
     color: #49a6ae;
@@ -67,6 +48,15 @@
 .margin-bottom-50 {
     margin-bottom: 50px;
 }
+
+/*
+*  
+*  HELPER CLASSES END
+*
+*/
+
+
+
 
 /* Clock stuff */
 
@@ -135,10 +125,12 @@
     font-size: 16px;
     font-weight: normal;
 }
+
 .eventLink:hover {
     background-color: rgba(160,200,220,0.12);
     color: #00467F !important;
 }
+
 .eventLink:visited{
     color: initial;
 }
@@ -147,6 +139,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+/* 
+    MEDIA QUERIES
+*/
 
 @media (max-width: 400px) {
   .eventsWrapper {
