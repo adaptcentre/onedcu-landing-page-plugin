@@ -302,7 +302,6 @@ function hideClockShowEvents() {
 
 function startSlideshow() {
   //https://css-tricks.com/snippets/jquery/simple-auto-playing-slideshow/
-  console.log('starting slideshow')
   if(slideshowInterval === null) {
     let duration = 5000;
 
@@ -310,13 +309,18 @@ function startSlideshow() {
     $('#custom-slideshow div:gt(0)').hide();
     
     setInterval(function() {
-      $('#custom-slideshow > div:first')
-        .fadeOut(1000)
-        .next()
-        .fadeIn(1000)
-        .end()
-        .appendTo('#custom-slideshow');
-    }, duration); 
+      
+      if ( document.hasFocus() ) {
+        // code to be run every 7 seconds, but only when tab is focused
+
+        $('#custom-slideshow > div:first')
+          .fadeOut(1000)
+          .next()
+          .fadeIn(1000)
+          .end()
+          .appendTo('#custom-slideshow');
+      }
+    }, duration );
   }
 }
 
