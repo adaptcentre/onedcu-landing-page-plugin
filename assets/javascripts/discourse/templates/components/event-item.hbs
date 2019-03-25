@@ -7,7 +7,7 @@
     
     <!-- Need to change the background color to match category bg color -->
     <div class="categoryText">
-      <span style="background-color:{{event.bg_col}}">{{event.category}}</span>
+      <span style="{{-html-safe (concat "background-color: " event.bg_col ";")}}">{{event.category}}</span>
     </div>
 
     <div class="speakerContainer mt-5px">
