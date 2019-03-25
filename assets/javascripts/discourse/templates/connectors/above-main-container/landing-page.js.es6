@@ -343,9 +343,13 @@ function calcImgHeight() {
     let tempH = $(value).height();
 
     imgHeight = Math.max(tempH, imgHeight);
-
-    $('#custom-slideshow').css('height', imgHeight + 'px');
   });
+
+  if(imgHeight === 0) {
+    imgHeight = 500;
+  }
+
+  $('#custom-slideshow').css('height', imgHeight + 'px');
 }
 
 // ---- ---- ---- ---- ---- ---- ---- ----
