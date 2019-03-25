@@ -1,5 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
-import Ember from 'ember'; 
+import Ember from 'ember';
 
 // ---- ---- ---- ---- ---- ---- ---- ----
 let slideshowInterval = null;
