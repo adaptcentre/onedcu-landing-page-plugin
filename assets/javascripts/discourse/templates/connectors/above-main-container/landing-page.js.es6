@@ -103,7 +103,7 @@ function resolveTopic(topicData) {
   */
   let tempIndex = title.indexOf('-');
 
-  if(tempIndex > 10) {
+  if(tempIndex > 0) {
     title = title.substring( tempIndex + 2 ); // +2 because there is a whitespace + - 
   }
   
