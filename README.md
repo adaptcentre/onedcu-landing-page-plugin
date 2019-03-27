@@ -33,3 +33,4 @@ Misc:
  	- The API keys are currently hardcoded. Site settings have been added but they are not linked in the code yet.
  	- API KEY SECURITY issue -> create new group and generate API keys?
  	- ADD code from polyfills.txt to /head section of webpage -> use admin interface to do this -> Internet explorer old version bug
+ 	- Change brower to old message: https://imagine.nuigalway.ie/admin/customize/site_texts/js.browser_update
