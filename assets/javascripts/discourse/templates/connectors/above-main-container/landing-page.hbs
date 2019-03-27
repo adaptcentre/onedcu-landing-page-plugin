@@ -3,7 +3,7 @@
 <div id="landing-page-plugin-container">
 
   <!-- MEDIA -->
-  <div class="grid-center media-main">
+  <div class="grid-center media-main margin-bottom-50">
     <div class="col-10_xs-12" id="custom-slideshow">
       
       <div>
@@ -21,11 +21,46 @@
     </div>
   </div>
 
+  <!-- VIDEO -->
+  <div class="grid-center margin-bottom-50">
+    <div class="col-10_xs-12">
+      <iframe width="760" height="427.5" style="margin-left: auto; margin-right: auto; display: block;" src="https://www.youtube.com/embed/klCx34Y9C0w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- INFO text -->
+
+  <div class="grid-center media-main margin-bottom-50">
+    <div class="col-6_xs-12">
+      <h3 class="highlight-text-color">How to participate:</h3>
+      <ol>
+        <li>Click the Sign Up button at the top of this page and fill in your details.</li>
+        <li>Once you click Create New Account, you will be emailed a link to verify your account.</li>
+        <li>Simply open that email (it may be in your Junk folder) and click the link to get started!</li>
+        <li>Find a live discussion and use the Reply button to post a comment.</li>
+        <li>Our recommended browsers are: Firefox and Chrome.</li>
+      </ol>
+    </div>
+    <div class="col-6_xs-12">
+      <h3 class="highlight-text-color">Conas páirt a ghlacadh ann:</h3>
+      <ol>
+        <li>Cliceáil ar Sign Up ar bharr an leathanaigh seo agus cuir isteach do shonraí.</li>
+        <li>Nuair a bheidh Create New Account cliceáilte agat, seolfar rphost chugat chun do chuntas a chinntiú.</li>
+        <li>Níl le déanamh ach an rphost sin a oscailt (seans go mbeidh sé sa Dramhphost) agus cliceáil ar an nasc le tosú!</li>
+        <li>Aimsigh díospóireacht bheo agus brúigh ar Reply chun trácht a scríobh.</li>
+        <li>Moltar na brabhsálaithe Firefox agus Chrome.</li>
+      </ol>
+    </div>
+  </div>
+
+        
+
   <!-- Clock -->
-  <div class="grid clock-main no-display margin-bottom-50">
+  <div class="grid clock-main margin-bottom-50">
     <div class="col">
         <div class="clockWrapper" id="clockdiv">
           
+
           <div class="timeWrapper daysWrapper">
             <span class="days timeNumber">00</span>
             <div class="smalltext">Days</div>
@@ -88,7 +123,7 @@
   </div>
 
   <!-- Events -->
-  <div class="grid events-main no-display margin-bottom-50">
+  <div class="grid events-main margin-bottom-50">
     <!-- Now On -->
     <div class="col-4_xs-12_sm-6">
       {{event-list events=liveEvents label="Now On"}}

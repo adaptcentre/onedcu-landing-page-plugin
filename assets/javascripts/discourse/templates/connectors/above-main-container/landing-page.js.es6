@@ -259,7 +259,7 @@ function initializePlugin(api, component) {
       //do we need to show the countdown clock?
       if( new Date() >= deadline ) {
         // no we do not need to show it
-        console.log('hiding countdown and showing events!');
+        console.log('hiding countdown!');
 
         // give DOM time to load
         setTimeout(function() {
@@ -267,16 +267,15 @@ function initializePlugin(api, component) {
           //initializeClock('clockdiv', deadline);
         }, 500);
       } else {
-        // Yes we do need to show it
-        console.log('showing countdown and hiding events!');
-
-        // give DOM time to load
         setTimeout(function() {
-          showClockHideEvents();
           initializeClock('clockdiv', deadline);
         }, 500);
       }
-  
+      
+      //need to calulate slideshow height
+      setTimeout(function() {
+        calcImgHeight();
+      }, 500);
     } else {
       component.set('showLandingPage', false);
     }
@@ -285,7 +284,7 @@ function initializePlugin(api, component) {
   //start slideshow
   //need to wait for DOM to load
   setTimeout( function() {
-    startSlideshow()  
+    startSlideshow();
   }, 500);
   
 }
@@ -346,7 +345,7 @@ function calcImgHeight() {
   });
 
   if(imgHeight === 0) {
-    imgHeight = 500;
+    imgHeight = 350;
   }
 
   $('#custom-slideshow').css('height', imgHeight + 'px');
