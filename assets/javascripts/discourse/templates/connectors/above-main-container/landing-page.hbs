@@ -21,9 +21,8 @@
     </div>
   </div>
 
-  <!-- INFO text -->
-
-  <div class="grid-center info-main margin-bottom-50">
+  <!-- INFO text 1-->
+  <div class="grid-center info-main-1 margin-bottom-50 no-display">
     <div class="col-6_xs-12">
       <h3 class="highlight-text-color">How to participate:</h3>
       <ol>
@@ -54,10 +53,17 @@
     </div>
   </div>
 
+  <!-- INFO text 2-->
+  <div class="grid-center info-main-2 margin-bottom-50">
+    <div class="col-12">
+      <h3 class="highlight-text-color" style="text-align:center;">This event is now over.</h3>
+    </div>
+  </div>
+
         
 
   <!-- Clock -->
-  <div class="grid clock-main margin-bottom-50">
+  <div class="grid clock-main margin-bottom-50 no-display">
     <div class="col">
         <div class="clockWrapper" id="clockdiv">
           
@@ -98,7 +104,7 @@
   </div>
 
   <!-- Events -->
-  <div class="grid events-main margin-bottom-50">
+  <div class="grid events-main margin-bottom-50 no-display">
     <!-- Now On -->
     <div class="col-4_xs-12_sm-6">
       {{event-list events=liveEvents label="Now On"}}
