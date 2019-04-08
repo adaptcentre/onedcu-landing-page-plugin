@@ -1,0 +1,109 @@
+/** TEMP START**/
+
+.info-main {
+    display: none;
+}
+
+.clock-main {
+    display: none;
+}
+
+/** TEMP END**/
+
+.d-header {
+  background-color: #f5c543;
+}
+
+.d-header-icons .d-icon {
+    color: #49a6ae;
+}
+
+/* 
+    TOPIC POST TABLE STYLES 
+    https://meta.discourse.org/t/create-a-table-using-markdown-on-your-discourse-forum/66544
+*/
+
+.cooked table {
+    border-collapse: unset !important;
+}
+
+.cooked table thead, .d-editor-preview table thead {
+    border-bottom: none !important;
+}
+
+.cooked table tr, .d-editor-preview table tr {
+    border-bottom: none;
+}
+
+/**********/
+/* Custom Group styles */
+/* Space recursively looks in children */
+
+
+/* Moderators */
+.group-moderators .topic-body {
+    //border-right: 5px solid #00B1AA;
+    border-left: 14px solid #eec55c;
+}
+.group-moderators .user-group {
+    color: darken(#eec55c, 10%) !important;
+    font-weight: 600;
+}
+
+/* Chairs */
+.group-Chairs .topic-body {
+    //border-right: 5px solid #00B1AA;
+    border-left: 14px solid #49a6ae;
+}
+.group-Chairs .user-group {
+    color: darken(#49a6ae, 10%) !important;
+    font-weight: 600;
+}
+
+/* Special Guests */
+.group-Special_Guests .topic-body {
+    //border-right: 5px solid #00B1AA;
+    border-left: 14px solid #d22f75;
+}
+.group-Special_Guests .user-group {
+    color: darken(#d22f75, 10%) !important;
+    font-weight: 600;
+}
+
+/* ---- */
+
+#ember12 .eventListContainer .eventListTitle .listText {
+    display: none;
+}
+
+#ember12 .eventListContainer .eventListTitle:before {
+    content: '...'
+}
+
+
+
+
+
+/**********/
+
+
+
+/* Scroll bar */
+.timeline-handle {
+    width: 0.8em !important;
+    position: relative !important;
+    left: -3px !important;
+    background-color: #00467F !important;
+}
+// body::-webkit-scrollbar {
+//     width: 1em;
+// }
+ 
+// body::-webkit-scrollbar-track {
+//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+// }
+ 
+// body::-webkit-scrollbar-thumb {
+//   background-color: darkgrey;
+//   outline: 1px solid slategrey;
+// }

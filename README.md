@@ -1,5 +1,5 @@
 # Discourse Landing Page Plugin
-Imagine NUI Galway Landing Page
+### (Imagine NUI Galway Landing Page)
 
 ---
 
@@ -9,6 +9,8 @@ API keys and category id's can now be changed in the admin interface of the main
 
 Discourse github repo: https://github.com/discourse/discourse
 
+---
+
 Development process:
  - follow these steps to create a local dev environment
    - mac: https://meta.discourse.org/t/beginners-guide-to-install-discourse-on-macos-for-development/15772
@@ -17,10 +19,12 @@ Development process:
  - download this plugin either to the /plugin folder of the discource clone or create a symlink
  	 - simlink: https://meta.discourse.org/t/beginners-guide-to-creating-discourse-plugins-part-4-git-setup/31272
 
+---
 
 Commands:
  - rm -rf tmp; bundle exec rails s -> run dev version
 
+---
 
 Misc:
  - using images that are saved in plugin public folder: https://meta.discourse.org/t/is-it-possible-to-include-background-images-with-a-plugin/36298/3
@@ -28,9 +32,23 @@ Misc:
  - install plugin on production server: https://meta.discourse.org/t/install-plugins-in-discourse/19157
  - sending builk email invites: https://meta.discourse.org/t/sending-bulk-user-invites/16468
 
+---
 
  Notes:
  	- The API keys are currently hardcoded. Site settings have been added but they are not linked in the code yet.
  	- API KEY SECURITY issue -> create new group and generate API keys?
- 	- ADD code from polyfills.txt to /head section of webpage -> use admin interface to do this -> Internet explorer old version bug
- 	- Change brower to old message: https://imagine.nuigalway.ie/admin/customize/site_texts/js.browser_update
+ 	- Change browser to old message: https://imagine.nuigalway.ie/admin/customize/site_texts/js.browser_update
+
+---
+
+Customize -> Edit CSS/HTML Light -> Common -> </head>
+- ADD code from polyfills.txt -> Internet explorer old version bug
+  - Fetch polyfill
+
+---
+
+Customize -> Edit CSS/HTML Light -> Common -> css
+- Add code from site_css.txt
+	- Misc css
+
+---
