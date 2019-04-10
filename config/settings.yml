@@ -1,25 +1,25 @@
 plugins:
-  nuig_enabled:
+  onedcu_enabled:
     default: true
     client: true
-  nuig_api_key_1:
+  onedcu_api_key_1:
     default: 39f810a82325454c449a42b849131b794d0d42f3cffac4e196a243c76c18304c
     client: true
-  nuig_user_api_key_1:
+  onedcu_user_api_key_1:
     default: ivanbacher
     client: true
-  nuig_api_key_2:
+  onedcu_api_key_2:
     default: 2a37579c9b1d9de8cb870961a3d4cd06dc24f3390572d07e38084b5d3a099b1f
     client: true
-  nuig_user_api_key_2:
+  onedcu_user_api_key_2:
     default: aoifebrady
     client: true
-  nuig_now_on_cat_id: 
+  onedcu_now_on_cat_id: 
     default: 5
     client: true
-  nuig_comming_up_cat_id:
+  onedcu_comming_up_cat_id:
     default: 6
     client: true
-  nuig_deadline:
-    default: "2019/03/28 11:00:00"
+  onedcu_deadline:
+    default: "2019/05/10 10:00:00"
     client: true

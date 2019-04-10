@@ -1,5 +1,5 @@
 # Discourse Landing Page Plugin
-### (Imagine NUI Galway Landing Page)
+### (ONEDCU Landing Page)
 
 ---
 
