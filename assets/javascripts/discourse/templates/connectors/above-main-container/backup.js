@@ -161,7 +161,7 @@ function resolveTopic(topicData) {
 }
 */
 
-/*
+
 function updateLandingPage(component, eventId, eventLabel, qEnd) {
   /*
   *   every page change you should check if the 'Now on' and 'Coming up' topics have been updated
@@ -169,7 +169,6 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
 
   // Get the Now On list and update the template
 
-  /*
   fetch(`/c/${eventId}.json${qEnd}`)
   .then( (res) => {
     return res.json();
@@ -215,7 +214,7 @@ function updateLandingPage(component, eventId, eventLabel, qEnd) {
     console.log(e);
   });
 }
-*/
+
 
 functionInitClock(elementId, deadline) {
 

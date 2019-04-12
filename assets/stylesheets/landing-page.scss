@@ -53,6 +53,9 @@
   display: none;
 }
 
+.padding-top-50 {
+    padding-top: 50px;
+}
 
 /* 
     ------------------------------
@@ -60,11 +63,14 @@
     ------------------------------
 */
 
+
+
 /* 
     ------------------------------
-    MEDIA
+    MEDIA SECTION
     ------------------------------
 */
+
 
 #media-main {
     
@@ -83,7 +89,7 @@
 
 /* 
     ------------------------------
-    CLOCK
+    CLOCK SECTION
     ------------------------------
 */
 
@@ -96,81 +102,16 @@
 
 
 
-
-
-
-
-
-
-/*
-*  
-*  LANDING MEDIA START
-*
+/* 
+    ------------------------------
+    EVENTS SECTION
+    ------------------------------
 */
 
-
-
-
-
-
-
-
-/*
-*  
-*  LANDING MEDIA END
-*
-*/
-
-
-
-
-/*
-*  
-*  HELPER CLASSES START
-*
-*/
-
-
-
-/*
-*  
-*  HELPER CLASSES END
-*
-*/
-
-
-
-
-/* Clock stuff */
-
-.clockWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.titleText {
+    font-weight: bold;
+    font-size: 18px;
 }
-
-.timeNumber {
-    font-size: 6em;
-    padding: 20px;
-    font-weight: 600;
-    color: #00a8b0;
-}
-
-.clockSeparator {
-    font-size: 6em;
-    font-weight: 600;
-    color: #00a8b0;
-}
-
-.smalltext {
-    display: none;
-}
-
-.daysWrapper + .separatorWrapper {
-  display: none;
-}
-
-/**************/
 
 .pdfButton {
     padding: 9px 18px;
@@ -211,21 +152,6 @@
 
 .eventLink:visited{
     color: initial;
-}
-
-.eventsWrapper {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-/* 
-    MEDIA QUERIES
-*/
-
-.eventsContainer .ember-view:not(:first-child) {
-    position: relative;
-    top: -2px;
 }
 
 .eventListTitle {
@@ -280,3 +206,16 @@
     color: #00467F;
     font-weight: 600;
 }
+
+/*
+.eventsWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.eventsContainer .ember-view:not(:first-child) {
+    position: relative;
+    top: -2px;
+}
+*/

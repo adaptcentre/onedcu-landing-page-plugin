@@ -99,40 +99,178 @@ function calculateSlidehowImageHeight() {
   $('#media-slideshow').css('height', imgHeight + 'px');
 }
 
+function getEvents(eventId, qEnd) {
+
+  let p = new Promise( (resolve, reject) => {
+
+    fetch(`/c/${eventId}.json${qEnd}`)
+    .then( (res) => {
+      return res.json();
+    })
+    .then( (data) => {
+
+      if(!data && !data.topics_list) {
+        return null;
+      }
+
+      const topics = data.topic_list.topics;
+      const asyncTasks = [];
+
+      //this loop creates an array of tasks which will then be executed in a controlled manner
+      for( let topic of topics ) {
+        let title = topic.title;
+        let isClosed = topic.closed;
+
+        if( title.startsWith('About the') || isClosed ) {
+          continue;
+        }
+
+        ((topic) => {
+
+          asyncTasks.push( (callback) => {
+          
+            //console.log( 'Getting data for post:', topic.title );
+
+            fetch(`/t/${topic.id}.json${qEnd}`)
+            .then( (res) => {
+              return res.json()
+            })
+            .then( (data) => {
+              callback(null, data); 
+            })
+            .catch( (err) => {
+              callback(err, null);
+            });
+          });
+        })(topic);
+      }
+
+      return asyncTasks
+    })
+    .then( (tasks) => {
+
+      let p = new Promise( (resolve, reject) => {
+        async.series( tasks, (err, results) => {
+
+          if(err) {
+            console.log(err);
+            reject(err);
+          }
+
+          resolve(results);
+        });
+      });
+
+      return p;
+    })
+    .then( (allTopics) => {
+
+      let output = allTopics.map( (topicData) => {
+        return resolveTopic(topicData);
+      })
+      resolve(output);
+    })
+    .catch( (err) => {
+      reject(err);
+    });
+  });
+
+  return p;
+} 
+
+function resolveTopic(topicData) {
+ 
+  const body = topicData.post_stream.posts[0].cooked;
+  
+  let title = topicData.fancy_title;
+  
+  /*
+    Example title:
+    A Distinctive NUI Galway - Our distinctive location
+
+    Need to parse out first part
+
+    so: "A Distinctive NUI Galway - Our distinctive location" turns into "Our distinctive location"
+  */
+  
+  let tempIndex = title.indexOf('-');
+
+  if(tempIndex > 0) {
+    title = title.substring( tempIndex + 2 ); // +2 because there is a whitespace + - 
+  }
+  
+  let startTime = '';
+  let endTime = '';
+  let urlLink = '';
+  let category = '';
+  let speakers = [];
+  let bg_col = '';
+  let lines = body.split('<br>');
+
+  lines.forEach((text) => {
+    let line = text
+    line = line.replace('<p>', '')
+    line = line.replace('</p>', '')
+    line = line.trim();
+
+    if (line.startsWith('Actual URL==' || line.startsWith('URL==') || line.startsWith('url=='))) {
+      urlLink = line.split('==')[1].trim();
+    } else if (line.startsWith('Start Time==') || line.startsWith('start time==')) {
+      startTime = line.split('==')[1].trim()
+    } else if (line.startsWith('End Time==') || line.startsWith('end time==')) {
+      endTime = line.split('==')[1].trim()
+    } else if (line.startsWith('Category==') || line.startsWith('category==')) {
+      category = line.split('==')[1].trim()
+    } else if (line.startsWith('Speakers==') || line.startsWith('speakers==')) {
+      speakers = line.split('==')[1].trim().split(',')
+      if (speakers.length === 1 && speakers[0] === '') {
+        speakers = []
+      }
+    } else if (line.startsWith('Cat-bg==') || line.startsWith('Cat-bg==')) {
+      bg_col = line.split('==')[1].trim()
+    }
+  });
+
+
+  let result = {};
+
+  result.title = title;
+  result.url = urlLink;
+  result.startTime = startTime;
+  result.endTime = endTime;
+  result.speakers = speakers;
+  result.category = category;
+  result.bg_col = bg_col;
+  
+  return result;
+}
+
 function initializePlugin(api, component) {
+
+  /*
+    API key + user information
+    --------------------------
+    
+    For the pulgin to function correctly, we need user api keys. These are created within the admin interface of the discourse app.
+    Once created, they can be hard coded in the files /config/settings.yml. Or they can also be changed used the admin interface of the discourse app
+  */
+
+  let apiKey = null;
+  let apiKeyUser = null;
+  let nowOnId = null;
+  let comingUpId = null;
+  let queryEndpoint = null;
+  let deadline = null;
+  let isEnabled = null;
 
   let slideshowInterval = null;
 
   api.onPageChange( (url, title) => {
 
-    /*
-      API key + user information
-      --------------------------
-      
-      For the pulgin to function correctly, we need user api keys. These are created within the admin interface of the discourse app.
-      Once created, they can be hard coded in the files /config/settings.yml. Or they can also be changed used the admin interface of the discourse app
-    */
+    // need to call this incase any of the values have been changed in admin panel;
+    setGlobalSettings(component);    
 
-    const apiKey_1 = component.siteSettings.onedcu_api_key_1;
-    const apiKeyUser_1 = component.siteSettings.onedcu_user_api_key_1;
-
-    const apiKey_2 = component.siteSettings.nuig_api_key_2;
-    const apiKeyUser_2 = component.siteSettings.onedcu_user_api_key_2;
-
-    const nowOnId = component.siteSettings.onedcu_now_on_cat_id;
-    const comingUpId = component.siteSettings.onedcu_comming_up_cat_id;
-
-    const queryEndpoints = [
-      `?api_key=${apiKey_1}&api_username=${apiKeyUser_1}`,
-      `?api_key=${apiKey_2}&api_username=${apiKeyUser_2}`
-    ];
-
-    const deadline = new Date( component.siteSettings.onedcu_deadline );
-
-    const isEnabled = component.siteSettings.onedcu_enabled || true;
-    const correctUrl = isCorrectUrl( url );
-
-    if( !isEnabled && !correctUrl ) {
+    if( !isEnabled || !isCorrectUrl( url ) ) {
       component.set('showLandingPage', false); 
       return null;
     }
@@ -152,10 +290,33 @@ function initializePlugin(api, component) {
         initClock( deadline );
       });
     }
-    
 
+    
+    //now lets update the events
+    getEvents(nowOnId, queryEndpoint)
+    .then( (liveTopics) => {
+      component.set('liveEvents', liveTopics);
+
+      return getEvents(comingUpId, queryEndpoint);
+    })
+    .then( (commingUpTopics) => {
+      component.set('nextEvents', commingUpTopics);
+    });
   });
   
+  function setGlobalSettings(component) {
+    apiKey = component.siteSettings.onedcu_api_key_1;
+    apiKeyUser = component.siteSettings.onedcu_user_api_key_1;
+
+    queryEndpoint = `?api_key=${apiKey}&api_username=${apiKeyUser}`;
+    
+    nowOnId = component.siteSettings.onedcu_now_on_cat_id;
+    comingUpId = component.siteSettings.onedcu_comming_up_cat_id;
+
+    deadline = new Date( component.siteSettings.onedcu_deadline );
+
+    isEnabled = component.siteSettings.onedcu_enabled;
+  }
 }
 
 
