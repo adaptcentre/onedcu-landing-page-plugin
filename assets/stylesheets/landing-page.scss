@@ -1,14 +1,106 @@
 
-/* MAIN CONTAINER */
-.landing-page-plugin-container {
-  margin-top: 30px;
-  margin-bottom: 30px;
+/* 
+    ------------------------------
+    HELPERS
+    ------------------------------
+*/
+
+.text-center {
+    text-align: center;
 }
 
-.clock-remaining-container {
-    text-align: center;
-    font-size: 2.5rem;
+.highlight-text-color {
+    color: #49a6ae;
 }
+
+.margin-top-50 {
+    margin-top: 50px;
+}
+
+.margin-bottom-50 {
+    margin-bottom: 50px;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.font-70 {
+    font-size: 70px;
+}
+
+.font-50 {
+    font-size: 50px;
+}
+
+.font-40 {
+    font-size: 40px;
+}
+
+.font-30 {
+    font-size: 30px;
+}
+
+.media-100-width {
+  width: 100%;
+}
+
+.no-display {
+  display: none;
+}
+
+
+/* 
+    ------------------------------
+    MAIN CONTAINER
+    ------------------------------
+*/
+
+/* 
+    ------------------------------
+    MEDIA
+    ------------------------------
+*/
+
+#media-main {
+    
+}
+
+#media-slideshow {
+  position: relative;
+}
+
+#media-slideshow > div { 
+  position: absolute;
+  width: 100%; 
+}
+
+
+
+/* 
+    ------------------------------
+    CLOCK
+    ------------------------------
+*/
+
+#clock-main {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 *  
@@ -17,23 +109,11 @@
 */
 
 
-.landing-media {
-  width: 100%;
-}
 
-#custom-slideshow {
-  position: relative;
-  height: 500px;
-}
 
-#custom-slideshow > div { 
-  position: absolute;
-  width: 100%; 
-}
 
-.no-display {
-  display: none;
-}
+
+
 
 /*
 *  
@@ -50,21 +130,7 @@
 *
 */
 
-.highlight-text-color {
-    color: #49a6ae;
-}
 
-.text-center {
-    text-align: center;
-}
-
-.margin-top-50 {
-    margin-top: 50px;
-}
-
-.margin-bottom-50 {
-    margin-bottom: 50px;
-}
 
 /*
 *  

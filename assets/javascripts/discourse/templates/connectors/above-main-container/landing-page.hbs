@@ -1,14 +1,82 @@
 {{#if showLandingPage}}
 
-<div id="landing-page-plugin-container">
+<div id="landing-page-plugin-container" class="margin-top-30 margin-bottom-30">
 
-  <!-- Clock -->
-  <div class="grid-center clock-main margin-bottom-50">
-    <div class="col clock-remaining-container">
-        <p id="clock-remaining-input"></p>
-        <p> until the event starts! </p>
+	<!-- Media -->
+	<div id="media-main" class="grid-center margin-bottom-50">
+    <div class="col-10_xs-12" id="media-slideshow">
+      
+      <div>
+        <!--<img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/carousel_1.png" />-->
+        <img class="media-100-width" src="https://via.placeholder.com/1000x300.pn?text=Placeholder+1" />
+      </div>
+
+      <div class="no-display">
+        <img class="media-100-width" src="https://via.placeholder.com/1000x300.pn?text=Placeholder+2" />
+      </div>
+      
+      <div class="no-display">
+        <img class="media-100-width" src="https://via.placeholder.com/1000x300.pn?text=Placeholder+3" />
+      </div>
+
     </div>
   </div>
+
+  
+  <!-- Clock -->
+  <div id="clock-main" class="grid-center margin-bottom-50 no-display">
+    
+    <div class="col-6 grid-center">
+    	<!-- Days -->
+    	<div class="col text-center">
+    		<div id="clock-days-value" class="font-70">
+    			00
+    		</div>
+    		<div>
+    			Days
+    		</div>
+    	</div>
+
+    	<!-- Hours -->
+    	<div class="col text-center">
+    		<div id="clock-hours-value" class="font-70">
+    			00
+    		</div>
+    		<div>
+    			Hours
+    		</div>
+    	</div>
+
+    	<!-- Minutes -->
+    	<div class="col text-center">
+    		<div id="clock-minutes-value" class="font-70">
+    			00
+    		</div>
+    		<div>
+    			Minutes
+    		</div>
+    	</div>
+
+    	<!-- Seconds -->
+    	<div class="col text-center">
+    		<div id="clock-seconds-value" class="font-70">
+    			00
+    		</div>
+    		<div>
+    			Seconds
+    		</div>
+    	</div>
+    </div>
+
+    <div class="col-12">
+    	<p class="text-center font-40">
+    		Until the event starts! 
+    	</p>
+    </div>
+
+	</div>
+
+	<!-- Events -->
 
 </div>
 
