@@ -1,22 +1,27 @@
-/** TEMP START**/
 
-.info-main {
-    display: none;
-}
-
-.clock-main {
-    display: none;
-}
-
-/** TEMP END**/
-
+/*  This will change the background colour of the header */
 .d-header {
-  background-color: #f5c543;
+  background-color: #4f868e;
 }
 
 .d-header-icons .d-icon {
-    color: #49a6ae;
+    color: #white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 
     TOPIC POST TABLE STYLES 
