@@ -1,11 +1,10 @@
 {{#if showLandingPage}}
 
-<div id="landing-page-plugin-container" class="margin-top-30 margin-bottom-30">
+<div id="landing-page-plugin-container">
 
 	<!-- Media -->
-	<div id="media-main" class="grid-center margin-bottom-50">
+	<div id="media-main" class="grid-center pb-5">
     <div class="col-10_xs-12" id="media-slideshow">
-      
       <div>
         <img class="media-100-width" src="/plugins/OneDCU-Landing-Page-Plugin/images/OneDCU_Web_Web Slider_900x365_BeHeard.png" />
       </div>
@@ -13,69 +12,67 @@
       <div class="no-display">
         <img class="media-100-width" src="/plugins/OneDCU-Landing-Page-Plugin/images/OneDCU_Web_Web Slider_900x365_general.png" />
       </div>
-      
-      <!--
-      <div class="no-display">
-        <img class="media-100-width" src="https://via.placeholder.com/1000x400.pn?text=Placeholder+3" />
-      </div>
-
-      <div class="no-display">
-        <img class="media-100-width" src="https://via.placeholder.com/1000x400.pn?text=Placeholder+4" />
-      </div>
-      -->
     </div>
   </div>
 
   
   <!-- Clock -->
-  <div id="clock-main" class="grid-center padding-top-50 margin-bottom-50 no-display main-text-color">
+  <div id="clock-main" class="grid-center py-5 no-display main-text-color">
     
-    <div class="col-6 grid-center">
+    <div class="col-10 grid-center">
     	<!-- Days -->
-    	<div class="col text-center">
-    		<div id="clock-days-value" class="font-70">
-    			00
-    		</div>
-    		<div>
-    			Days
-    		</div>
+    	<div class="col text-center my-1">
+        <div class="px-1 py-1">
+      		<div id="clock-days-value" class="font-size-6 clock-time-value">
+      			00
+      		</div>
+      		<div class="font-size-1 clock-time-desc">
+      			Days
+      		</div>
+        </div>
     	</div>
 
     	<!-- Hours -->
-    	<div class="col text-center">
-    		<div id="clock-hours-value" class="font-70">
-    			00
-    		</div>
-    		<div>
-    			Hours
-    		</div>
+    	<div class="col text-center my-1">
+        <div class="px-1 py-1">
+      		<div id="clock-hours-value" class="font-size-6 clock-time-value">
+      			00
+      		</div>
+      		<div class="font-size-1 clock-time-desc">
+      			Hours
+      		</div>
+        </div>
     	</div>
 
     	<!-- Minutes -->
-    	<div class="col text-center">
-    		<div id="clock-minutes-value" class="font-70">
-    			00
-    		</div>
-    		<div>
-    			Minutes
-    		</div>
+    	<div class="col text-center my-1">
+    		<div class="px-1 py-1">
+          <div id="clock-minutes-value" class="font-size-6">
+      			00
+      		</div>
+      		<div class="font-size-1 clock-time-desc">
+      			Minutes
+      		</div>
+        </div>
     	</div>
 
     	<!-- Seconds -->
-    	<div class="col text-center">
-    		<div id="clock-seconds-value" class="font-70">
-    			00
-    		</div>
-    		<div>
-    			Seconds
-    		</div>
+    	<div class="col text-center my-1">
+        <div class="px-1 py-1">
+      		<div id="clock-seconds-value" class="font-size-6 clock-time-value">
+      			00
+      		</div>
+      		<div class="font-size-1 clock-time-desc clock-time-value">
+      			Seconds
+      		</div>
+        </div>
     	</div>
     </div>
 
 	</div>
 
 	<!-- Events -->
-	<div id="events-main" class="grid margin-bottom-50 no-display">
+	<div id="events-main" class="grid py-5 no-display">
 
 		<div class="col-4_xs-12_sm-6">
       {{event-list events=liveEvents label="Now On"}}
@@ -99,13 +96,6 @@
 
         <div class="custom-button">
           <a href="" target="_blank" class="custom-button-link">Message From The President</a>
-        </div>
-        
-        <div>
-          <a class="twitter-timeline" href="https://twitter.com/DublinCityUni?ref_src=twsrc%5Etfw" data-height="450">
-            Tweets by DCU
-          </a> 
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
     </div>

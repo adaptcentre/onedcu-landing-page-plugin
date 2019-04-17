@@ -13,37 +13,96 @@
     color: #4f868e;
 }
 
-.margin-top-50 {
-    margin-top: 50px;
+.mt-5 {
+    margin-top: 5rem;
 }
 
-.margin-bottom-50 {
-    margin-bottom: 50px;
+.mb-5 {
+    margin-bottom: 5rem;
 }
 
-.margin-top-30 {
-    margin-top: 30px;
+.mt-3 {
+    margin-top: 3rem;
 }
 
-.margin-bottom-30 {
-    margin-bottom: 30px;
+.mb-3 {
+    margin-bottom: 3rem;
 }
 
-.font-70 {
-    font-size: 70px;
+
+
+.my-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
-.font-50 {
-    font-size: 50px;
+.my-5 {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
-.font-40 {
-    font-size: 40px;
+
+.pt-1 {
+    padding-top: 1rem;
 }
 
-.font-30 {
-    font-size: 30px;
+.pb-1 {
+    padding-bottom: 1rem;
 }
+
+.py-1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.px-1 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.pt-5 {
+    padding-top: 5rem;
+}
+
+.pb-5 {
+    padding-bottom: 5rem;
+}
+
+.py-5 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+
+.font-size-1 {
+    font-size: 1rem;
+} 
+
+.font-size-2 {
+    font-size: 2rem;
+}
+
+.font-size-3 {
+    font-size: 3rem;
+}
+
+.font-size-4 {
+    font-size: 4rem;
+}
+
+.font-size-5 {
+    font-size: 5rem;
+}
+
+.font-size-6 {
+    font-size: 6em;
+}
+
+.font-size-7 {
+    font-size: 7em;
+}
+
+
 
 .media-100-width {
   width: 100%;
@@ -53,9 +112,7 @@
   display: none;
 }
 
-.padding-top-50 {
-    padding-top: 50px;
-}
+
 
 /* 
     ------------------------------
@@ -97,8 +154,10 @@
     
 }
 
-
-
+#clock-main .col > div {
+    background-color: #FAB500;
+    color: #fff;
+}
 
 
 
