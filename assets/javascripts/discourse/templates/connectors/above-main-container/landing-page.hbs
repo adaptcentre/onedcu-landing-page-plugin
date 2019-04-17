@@ -7,14 +7,14 @@
     <div class="col-10_xs-12" id="media-slideshow">
       
       <div>
-        <!--<img class="landing-media" src="/plugins/Imagine-NUI-Galway-Landing-Page/images/carousel_1.png" />-->
-        <img class="media-100-width" src="https://via.placeholder.com/1000x400.pn?text=Placeholder+1" />
+        <img class="media-100-width" src="/plugins/OneDCU-Landing-Page-Plugin/images/OneDCU_Web_Web Slider_900x365_BeHeard.png" />
       </div>
 
       <div class="no-display">
-        <img class="media-100-width" src="https://via.placeholder.com/1000x400.pn?text=Placeholder+2" />
+        <img class="media-100-width" src="/plugins/OneDCU-Landing-Page-Plugin/images/OneDCU_Web_Web Slider_900x365_general.png" />
       </div>
       
+      <!--
       <div class="no-display">
         <img class="media-100-width" src="https://via.placeholder.com/1000x400.pn?text=Placeholder+3" />
       </div>
@@ -22,13 +22,13 @@
       <div class="no-display">
         <img class="media-100-width" src="https://via.placeholder.com/1000x400.pn?text=Placeholder+4" />
       </div>
-
+      -->
     </div>
   </div>
 
   
   <!-- Clock -->
-  <div id="clock-main" class="grid-center padding-top-50 margin-bottom-50 no-display">
+  <div id="clock-main" class="grid-center padding-top-50 margin-bottom-50 no-display main-text-color">
     
     <div class="col-6 grid-center">
     	<!-- Days -->
@@ -81,7 +81,7 @@
 	</div>
 
 	<!-- Events -->
-	<div id="events-main" class="grid margin-bottom-50">
+	<div id="events-main" class="grid margin-bottom-50 no-display">
 
 		<div class="col-4_xs-12_sm-6">
       {{event-list events=liveEvents label="Now On"}}
@@ -95,23 +95,25 @@
     
     <div class="col-4_xs-12_sm-12">
       <div class="otherItemList">
-        <div class="pdfButton scheduleButton">
-          <a href="" target="_blank" class="landingButton scheduleButton">Schedule / Sceideal</a>
+        <div class="custom-button">
+          <a href="" target="_blank" class="custom-button-link">Schedule</a>
         </div>
         
-        <div class="pdfButton aboutButton">
-          <a href="" target="_blank" class="landingButton aboutButton">FAQs</a>
+        <div class="custom-button">
+          <a href="" target="_blank" class="custom-button-link">FAQs</a>
         </div>
-        
-        <div class="pdfButton aboutButton">
-          <a href="" target="_blank" class="landingButton aboutButton">Message from the President</a>
+
+        <div class="custom-button">
+          <a href="" target="_blank" class="custom-button-link">Message From The President</a>
         </div>
         
         <div>
         	<a
           	class="twitter-timeline"
           	href="https://twitter.com/DublinCityUni"
-          	data-height="500">Tweets by NUI Galway</a>
+          	data-height="400">
+            Tweets by DCU
+          </a>
         	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>

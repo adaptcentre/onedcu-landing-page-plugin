@@ -9,8 +9,8 @@
     text-align: center;
 }
 
-.highlight-text-color {
-    color: #49a6ae;
+.main-text-color {
+    color: #4f868e;
 }
 
 .margin-top-50 {
@@ -113,23 +113,23 @@
     font-size: 18px;
 }
 
-.pdfButton {
+.custom-button {
     padding: 9px 18px;
     font-size: 1.1487em;
     line-height: 1;
     border: none;
     font-weight: normal;
-    background: #00a8b0;
+    background: #4f868e;
     margin: 10px 0;
     border-radius: 4px;
 }
 
-.pdfButton > .landingButton {
+.custom-button > .custom-button-link {
     color:white;
 }
 
-.pdfButton:hover{
-    background: darken(#00a8b0, 5%);
+.custom-button:hover{
+    background: darken(#4f868e, 10%);
 }
 
 .eventLink {
@@ -158,7 +158,7 @@
     margin: 8px 0;
     font-size: 35px;
     font-weight: 900;
-    color: #00a8b0;
+    color: #4f868e;
 }
 
 .eventItemWrapper {

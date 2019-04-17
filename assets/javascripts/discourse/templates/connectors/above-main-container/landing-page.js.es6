@@ -9,11 +9,11 @@ function prettyPrintTime(value) {
   return output += value.toString();
 }
 
-function initClock(deadline) {
+function initClock(deadline, clockInterval, onDealineReachedCallback) {
   
-  $('#clock-main').removeClass('no-display');
-
-  let timeinterval = null;
+  if(clockInterval !== null) {
+    clearInterval(clockInterval);
+  }
 
   function isOver(remainig) {
     if( remainig.days <= 0 && remainig.hours <= 0 && remainig.minutes <= 0 && remainig.seconds <= 0 ) {
@@ -37,13 +37,13 @@ function initClock(deadline) {
     $('#clock-seconds-value').text( prettyPrintTime( remainig.seconds ) );
 
     if ( isOver(remainig) ) {
-      clearInterval(timeinterval);
-      $('#clock-main').addClass('no-display');
+      clearInterval(clockInterval);
+      onDealineReachedCallback();
     }
   }
 
   setTimeout( () => {
-    timeinterval = setInterval(update, 1000);  
+    clockInterval = setInterval(update, 1000);  
   }, 500);
 }
 
@@ -63,7 +63,7 @@ function initSlideshow(slideshowInterval) {
     return false;
   }
 
-  let duration = 5000;
+  let duration = 7000;
 
   $('#media-slideshow div:gt(0)').removeClass('no-display');
   $('#media-slideshow div:gt(0)').hide();
@@ -74,16 +74,16 @@ function initSlideshow(slideshowInterval) {
       // code to be run every 5 seconds, but only when tab is focused
 
       $('#media-slideshow > div:first')
-        .fadeOut(1000)
+        .fadeOut(1500)
         .next()
-        .fadeIn(1000)
+        .fadeIn(1500)
         .end()
         .appendTo('#media-slideshow');
     }
   }, duration );
 }
 
-function calculateSlidehowImageHeight() {
+function calculateSlideShowImageHeight() {
   let imgHeight = 0;
 
   $('#media-slideshow img').each( (index, value) => {
@@ -262,8 +262,13 @@ function initializePlugin(api, component) {
   let queryEndpoint = null;
   let deadline = null;
   let isEnabled = null;
+  let clockInterval = null;
 
   let slideshowInterval = null;
+
+  $( window ).resize( () => {
+    calculateSlideShowImageHeight();
+  });
 
   api.onPageChange( (url, title) => {
 
@@ -275,24 +280,32 @@ function initializePlugin(api, component) {
       return null;
     }
     
-    // lets show the component
+    // lets show the whole component
     component.set('showLandingPage', true); 
 
     //lets init the slideshow
     $( document ).ready( () => {
-      calculateSlidehowImageHeight();
+      calculateSlideShowImageHeight();
       initSlideshow(slideshowInterval);
     });
 
     //lets check if we need to show the clock
     if( new Date() <= deadline ) {
       $( document ).ready( () => {
-        initClock( deadline );
+        $('#clock-main').removeClass('no-display');
+
+        initClock( deadline, clockInterval ,() => {
+          $('#clock-main').addClass('no-display');t
+        });
       });
     }
 
+    //first we need to show it.
+    $( document ).ready( () => {
+      $('#events-main').removeClass('no-display');
+    });
     
-    //now lets update the events
+    //now lets update the events - this is async so no need to wait until doc is ready
     getEvents(nowOnId, queryEndpoint)
     .then( (liveTopics) => {
       component.set('liveEvents', liveTopics);
@@ -302,7 +315,9 @@ function initializePlugin(api, component) {
     .then( (commingUpTopics) => {
       component.set('nextEvents', commingUpTopics);
     });
+
   });
+
   
   function setGlobalSettings(component) {
     apiKey = component.siteSettings.onedcu_api_key_1;
@@ -318,9 +333,6 @@ function initializePlugin(api, component) {
     isEnabled = component.siteSettings.onedcu_enabled;
   }
 }
-
-
-
 
 
 
