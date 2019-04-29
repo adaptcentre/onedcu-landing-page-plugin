@@ -1,10 +1,8 @@
 en:
   site_settings:
     onedcu_enabled: "enable plugin?"
-    onedcu_api_key_1: "generated api key 1"
-    onedcu_user_api_key_1: "add username for generated api key 1"
-    onedcu_api_key_1: "generated api key 1"
-    onedcu_user_api_key_1: "add username for generated api key 2"
+    onedcu_api_key: "generated api key"
+    onedcu_user_api_key: "add username for generated api key"
     onedcu_now_on_cat_id: "id for now on category"
-    onedcu_comming_up_cat_id: "id for comming up category"
+    onedcu_coming_up_cat_id: "id for coming up category"
     onedcu_deadline: "when is the event - format is year/month/day hour:min:sec"

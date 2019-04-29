@@ -31,7 +31,13 @@ function initClock(deadline, clockInterval, onDealineReachedCallback) {
       0
     );
 
-    $('#clock-days-value').text( prettyPrintTime( remainig.days ) );
+    //let's remove the days component (col) if the remaining days are 0
+    if(remainig.days === 0) {
+      $('#clock-main-days-col').css('display', 'none');
+    } else {
+      $('#clock-days-value').text( prettyPrintTime( remainig.days ) );
+    }
+
     $('#clock-hours-value').text( prettyPrintTime( remainig.hours ) );
     $('#clock-minutes-value').text( prettyPrintTime( remainig.minutes ) );
     $('#clock-seconds-value').text( prettyPrintTime( remainig.seconds ) );
@@ -257,8 +263,12 @@ function initializePlugin(api, component) {
 
   let apiKey = null;
   let apiKeyUser = null;
-  let nowOnId = null;
-  let comingUpId = null;
+  
+  let comingUpCatId = null;
+  let nowOnCatId = null;
+
+  
+
   let queryEndpoint = null;
   let deadline = null;
   let isEnabled = null;
@@ -306,11 +316,11 @@ function initializePlugin(api, component) {
     });
     
     //now lets update the events - this is async so no need to wait until doc is ready
-    getEvents(nowOnId, queryEndpoint)
+    getEvents(nowOnCatId, queryEndpoint)
     .then( (liveTopics) => {
       component.set('liveEvents', liveTopics);
 
-      return getEvents(comingUpId, queryEndpoint);
+      return getEvents(comingUpCatId, queryEndpoint);
     })
     .then( (commingUpTopics) => {
       component.set('nextEvents', commingUpTopics);
@@ -320,13 +330,13 @@ function initializePlugin(api, component) {
 
   
   function setGlobalSettings(component) {
-    apiKey = component.siteSettings.onedcu_api_key_1;
-    apiKeyUser = component.siteSettings.onedcu_user_api_key_1;
+    apiKey = component.siteSettings.onedcu_api_key;
+    apiKeyUser = component.siteSettings.onedcu_user_api_key;
 
     queryEndpoint = `?api_key=${apiKey}&api_username=${apiKeyUser}`;
     
-    nowOnId = component.siteSettings.onedcu_now_on_cat_id;
-    comingUpId = component.siteSettings.onedcu_comming_up_cat_id;
+    nowOnCatId = component.siteSettings.onedcu_now_on_cat_id;
+    comingUpCatId = component.siteSettings.onedcu_coming_up_cat_id;
 
     deadline = new Date( component.siteSettings.onedcu_deadline );
 
