@@ -281,8 +281,6 @@ function initializePlugin(api, component) {
   });
 
   
-  //console.log(api.onAppEvent)
-
   api.onPageChange( (url, title) => {
 
     // need to call this incase any of the values have been changed in admin panel;
