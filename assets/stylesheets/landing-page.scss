@@ -194,12 +194,8 @@
 .eventLink {
     padding: 10px 0;
     color: initial;
-    border-top: 2px;
-    border-bottom: 2px;
-    border-style: solid;
-    border-left: 0px;
-    border-right: 0px;
-    border-color: rgba(15,70,100,0.12);
+    
+    border-bottom: 2px solid rgba(15,70,100,0.12);
     font-size: 16px;
     font-weight: normal;
 }
@@ -218,6 +214,7 @@
     font-size: 35px;
     font-weight: 900;
     color: #4f868e;
+    border-bottom: 2px solid rgba(15,70,100,0.12);
 }
 
 .eventItemWrapper {
