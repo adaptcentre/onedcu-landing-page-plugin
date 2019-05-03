@@ -66,7 +66,7 @@ function initSlideshow(slideshowInterval) {
   
   //https://css-tricks.com/snippets/jquery/simple-auto-playing-slideshow/
   if(slideshowInterval !== null) {
-    return false;
+    return slideshowInterval;
   }
 
   let duration = 7000;
@@ -87,6 +87,8 @@ function initSlideshow(slideshowInterval) {
         .appendTo('#media-slideshow');
     }
   }, duration );
+
+  return slideshowInterval;
 }
 
 function calculateSlideShowImageHeight() {
@@ -297,7 +299,7 @@ function initializePlugin(api, component) {
     //lets init the slideshow
     $( document ).ready( () => {
       calculateSlideShowImageHeight();
-      initSlideshow(slideshowInterval);
+      slideshowInterval = initSlideshow(slideshowInterval);
     });
 
     //lets check if we need to show the clock

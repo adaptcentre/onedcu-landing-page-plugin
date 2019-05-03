@@ -68,6 +68,11 @@
     padding-bottom: 5rem;
 }
 
+.py-1 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important; 
+}
+
 .py-5 {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -140,6 +145,25 @@
 #media-slideshow > div { 
   position: absolute;
   width: 100%; 
+}
+
+
+.custom-button-2 {
+    cursor: pointer; 
+    border-radius: 0; 
+    font-size: 1.5rem; 
+    text-align:center;
+    padding: 1.5rem;
+    background: #4f868e;
+    
+}
+
+.custom-button-2 a {
+    color: white !important;
+}
+
+.custom-button-2:hover{
+    background: darken(#4f868e, 10%);
 }
 
 
