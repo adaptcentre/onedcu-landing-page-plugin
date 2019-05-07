@@ -214,6 +214,7 @@ function resolveTopic(topicData) {
   let speakers = [];
   let bg_col = '';
   let lines = body.split('<br>');
+  let order = 0;
 
   lines.forEach((text) => {
     let line = text
@@ -236,6 +237,8 @@ function resolveTopic(topicData) {
       }
     } else if (line.startsWith('Cat-bg==') || line.startsWith('Cat-bg==')) {
       bg_col = line.split('==')[1].trim()
+    } else if (line.startsWith('order==') || line.startsWith('Order==')) {
+      order = parseInt(line.split('==')[1].trim());
     }
   });
 
@@ -249,6 +252,7 @@ function resolveTopic(topicData) {
   result.speakers = speakers;
   result.category = category;
   result.bg_col = bg_col;
+  result.order = order;
   
   return result;
 }
@@ -355,11 +359,15 @@ function initializePlugin(api, component) {
     //now lets update the events - this is async so no need to wait until doc is ready
     getEvents(nowOnCatId, queryEndpoint)
     .then( (liveTopics) => {
+
+      //order topics based on order propery
+      liveTopics.sort( (a,b) => { (a, b) => { return a.order - b.order; } });
       component.set('liveEvents', liveTopics);
 
       return getEvents(comingUpCatId, queryEndpoint);
     })
     .then( (commingUpTopics) => {
+      commingUpTopics.sort( (a,b) => { (a, b) => { return a.order - b.order; } });
       component.set('nextEvents', commingUpTopics);
     });
 
