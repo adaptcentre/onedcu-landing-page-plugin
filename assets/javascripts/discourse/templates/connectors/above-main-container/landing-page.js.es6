@@ -63,19 +63,19 @@ function isCorrectUrl( url ) {
 }
 
 function initSlideshow(slideshowInterval) {
-  
+
   //https://css-tricks.com/snippets/jquery/simple-auto-playing-slideshow/
   if(slideshowInterval !== null) {
     return slideshowInterval;
   }
 
-  let duration = 7000;
+  let duration = 5000;
 
   $('#media-slideshow div:gt(0)').removeClass('no-display');
   $('#media-slideshow div:gt(0)').hide();
     
   slideshowInterval = setInterval( () => {
-      
+    
     if ( document.hasFocus() ) {
       // code to be run every 5 seconds, but only when tab is focused
 
@@ -298,7 +298,8 @@ function initializePlugin(api, component) {
 
     //lets init the slideshow
     $( document ).ready( () => {
-      calculateSlideShowImageHeight();
+      //calculateSlideShowImageHeight();
+      $('video').prop('muted',true)[0].play();
       slideshowInterval = initSlideshow(slideshowInterval);
     });
 
