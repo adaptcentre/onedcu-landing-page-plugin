@@ -255,10 +255,10 @@ function resolveTopic(topicData) {
 
 function initScrollIcons() {
   $(".scrollable").click(function(event){
-    var id = $(this).attr('href');
+    let id = $(this).attr('href');
 
     // target element
-    var $id = $(id);
+    let $id = $(id);
 
     if ($id.length === 0) {
         return;
@@ -268,7 +268,11 @@ function initScrollIcons() {
     event.preventDefault();
 
     // top position relative to the document
-    var pos = $id.offset().top;
+    let pos = $id.offset().top;
+
+    if(id="#additional-info") {
+      pos -= 100; //magic number
+    }
 
     // animated top scrolling
     $('body, html').animate({scrollTop: pos}, 1500);
@@ -326,7 +330,9 @@ function initializePlugin(api, component) {
     $( document ).ready( () => {
       //calculateSlideShowImageHeight();
       $('video').prop('muted',true)[0].play();
+      
       slideshowInterval = initSlideshow(slideshowInterval);
+
       calculateSlideShowImageHeight();
     });
 

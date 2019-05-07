@@ -17,3 +17,5 @@ register_asset "stylesheets/landing-page.scss"
 
 
 register_svg_icon "chevron-down" if respond_to?(:register_svg_icon)
+register_svg_icon "arrow-circle-right" if respond_to?(:register_svg_icon)
+
