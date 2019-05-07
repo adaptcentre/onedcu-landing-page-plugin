@@ -361,13 +361,13 @@ function initializePlugin(api, component) {
     .then( (liveTopics) => {
 
       //order topics based on order propery
-      liveTopics.sort( (a,b) => { (a, b) => { return a.order - b.order; } });
+      liveTopics.sort( (a,b) => { return a.order - b.order; });
       component.set('liveEvents', liveTopics);
 
       return getEvents(comingUpCatId, queryEndpoint);
     })
     .then( (commingUpTopics) => {
-      commingUpTopics.sort( (a,b) => { (a, b) => { return a.order - b.order; } });
+      commingUpTopics.sort( (a,b) => { return a.order - b.order; });
       console.log(commingUpTopics)
       component.set('nextEvents', commingUpTopics);
     });
