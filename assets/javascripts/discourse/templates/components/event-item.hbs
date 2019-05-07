@@ -13,12 +13,14 @@
     <div class="speakerContainer mt-5px">
       {{#if event.speakers}}
         <div class="speakerWrapper">
-          <span class="speakerText">With</span>
           <div class="speakerList">
+            <!--<span class="speakerText">With</span>-->
+            <span>{{{speaker}}}</span>
             {{#each event.speakers as |speaker|}}
-              <div class="speaker">
+              <span class="speakerText">{{{speaker}}}</span>
+              <!--<div class="speaker">
                 <span class="speakerText">{{{speaker}}}</span>
-              </div>
+              </div>-->
             {{/each}}
           </div>
         </div>
