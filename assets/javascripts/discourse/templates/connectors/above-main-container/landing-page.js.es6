@@ -357,19 +357,20 @@ function initializePlugin(api, component) {
     });
     
     //now lets update the events - this is async so no need to wait until doc is ready
-    getEvents(nowOnCatId, queryEndpoint)
-    .then( (liveTopics) => {
+    getEvents(comingUpCatId, queryEndpoint)
+    .then( (commingUpTopics) => {
 
       //order topics based on order propery
-      liveTopics.sort( (a,b) => { return a.order - b.order; });
-      component.set('liveEvents', liveTopics);
-
-      return getEvents(comingUpCatId, queryEndpoint);
-    })
-    .then( (commingUpTopics) => {
       commingUpTopics.sort( (a,b) => { return a.order - b.order; });
-      console.log(commingUpTopics)
+      
       component.set('nextEvents', commingUpTopics);
+
+      return getEvents(nowOnCatId, queryEndpoint);
+    })
+    .then( (liveTopics) => {
+      liveTopics.sort( (a,b) => { return a.order - b.order; });
+      
+      component.set('liveEvents', liveTopics);
     });
 
   });
