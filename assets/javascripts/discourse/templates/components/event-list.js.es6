@@ -4,8 +4,9 @@ export default Ember.Component.extend({
 
 		Ember.defineProperty( this, 'isListEmpty', Ember.computed( 'events', () => {
   		
+      console.log(this.events)
   		if(this.events) {
-  			return this.events.length <= 0;
+  			return false;
   		}
 
   		return true;

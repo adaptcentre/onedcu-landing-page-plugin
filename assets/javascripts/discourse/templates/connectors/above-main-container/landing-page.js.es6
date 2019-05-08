@@ -164,7 +164,6 @@ function getEvents(eventId, qEnd) {
         resolve(allTopics)
       };
 
-
       //now we have to add tasks to the Q
       for( let topic of topics ) {
         let title = topic.title;
@@ -175,6 +174,11 @@ function getEvents(eventId, qEnd) {
         }
 
         taskQ.push( {topicId: topic.id}, () => {} );
+      }
+      
+      //if there are no tasks in Q then return an empty array
+      if(taskQ.length() === 0) {
+        resolve([]);
       }
     })
     .catch( (err) => {
@@ -368,7 +372,7 @@ function initializePlugin(api, component) {
     })
     .then( (liveTopics) => {
       liveTopics.sort( (a,b) => { return a.order - b.order; });
-      
+      console.log(liveTopics, 'adsa')
       component.set('liveEvents', liveTopics);
     });
 
