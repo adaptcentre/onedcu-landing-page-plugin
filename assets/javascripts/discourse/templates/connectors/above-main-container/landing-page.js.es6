@@ -372,7 +372,7 @@ function initializePlugin(api, component) {
     })
     .then( (liveTopics) => {
       liveTopics.sort( (a,b) => { return a.order - b.order; });
-      console.log(liveTopics, 'adsa')
+      
       component.set('liveEvents', liveTopics);
     });
 
