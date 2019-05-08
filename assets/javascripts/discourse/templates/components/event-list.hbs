@@ -2,9 +2,19 @@
   <div class="eventListTitle">
     <span class="listText">{{label}}</span>
   </div>
+
+
   <div class="eventsContainer">
-    {{#each events as |event| }}
-      {{event-item event=event}}
-    {{/each}}
+
+  	<!-- If list is empty then show some type of loading indication-->
+  	{{#if isListEmpty}}
+  		<div class="loading-spinner main-text-color">
+				{{d-icon 'spinner'}}
+			</div>
+  	{{ else }}
+	  	{{#each events as |event| }}
+	      {{event-item event=event}}
+	    {{/each}}
+  	{{/if}}
   </div>
 </div>

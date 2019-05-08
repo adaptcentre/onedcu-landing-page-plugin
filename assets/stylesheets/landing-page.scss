@@ -140,6 +140,26 @@
     font-size: 2rem;
 }
 
+.loading-spinner {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 4rem;
+}
+
+.loading-spinner svg{
+  animation: loading-spinner 2s infinite linear;
+}
+
+@keyframes loading-spinner{
+  0%{
+    transform:rotate(0deg)
+  } 
+  to
+  {
+    transform:rotate(1turn)
+  }
+}
+
 /* 
     ------------------------------
     MAIN CONTAINER
