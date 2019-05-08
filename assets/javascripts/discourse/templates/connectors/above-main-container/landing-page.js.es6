@@ -122,9 +122,50 @@ function getEvents(eventId, qEnd) {
       }
 
       const topics = data.topic_list.topics;
+      
       const asyncTasks = [];
+      const qWorkers = 1;
+      const throttlMS = 300;
 
-      //this loop creates an array of tasks which will then be executed in a controlled manner
+      let allTopics = [];
+
+      //lets create our Q
+      let taskQ = async.queue( (task, callback) => {
+
+        let startTime = Date.now();
+
+        fetch(`/t/${task.topicId}.json${qEnd}`)
+          .then( (res) => {
+            return res.json();
+          })
+          .then( (data) => {
+            allTopics.push( resolveTopic(data) );
+
+            let timeTakenInMS = (Date.now() - startTime);
+            let timeToWait = throttlMS - timeTakenInMS;
+            
+            if(timeToWait <= 0 ) {
+              timeToWait = 0;
+            } 
+            
+            // we want to wait a couple of ms to note reach the rate limits per second
+            setTimeout( () => {
+              callback(); 
+            }, timeToWait )
+            
+          })
+          .catch( (err) => {
+            callback();
+          });
+      }, qWorkers);
+
+      // this gets called as soon as all tasks are done in Q
+      taskQ.drain = () => {
+        resolve(allTopics)
+      };
+
+
+      //now we have to add tasks to the Q
       for( let topic of topics ) {
         let title = topic.title;
         let isClosed = topic.closed;
@@ -133,50 +174,8 @@ function getEvents(eventId, qEnd) {
           continue;
         }
 
-        ((topic) => {
-
-          asyncTasks.push( (callback) => {
-          
-            //console.log( 'Getting data for post:', topic.title );
-
-            fetch(`/t/${topic.id}.json${qEnd}`)
-            .then( (res) => {
-              return res.json()
-            })
-            .then( (data) => {
-              callback(null, data); 
-            })
-            .catch( (err) => {
-              callback(err, null);
-            });
-          });
-        })(topic);
+        taskQ.push( {topicId: topic.id}, () => {} );
       }
-
-      return asyncTasks
-    })
-    .then( (tasks) => {
-
-      let p = new Promise( (resolve, reject) => {
-        async.series( tasks, (err, results) => {
-
-          if(err) {
-            console.log(err);
-            reject(err);
-          }
-
-          resolve(results);
-        });
-      });
-
-      return p;
-    })
-    .then( (allTopics) => {
-
-      let output = allTopics.map( (topicData) => {
-        return resolveTopic(topicData);
-      })
-      resolve(output);
     })
     .catch( (err) => {
       reject(err);
