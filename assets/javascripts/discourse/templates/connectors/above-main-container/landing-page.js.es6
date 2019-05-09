@@ -336,7 +336,7 @@ function initializePlugin(api, component) {
     //lets init the slideshow
     $( document ).ready( () => {
       //calculateSlideShowImageHeight();
-      $('video').prop('muted',true)[0].play();
+      //$('video').prop('muted',true)[0].play();
       
       slideshowInterval = initSlideshow(slideshowInterval);
 
