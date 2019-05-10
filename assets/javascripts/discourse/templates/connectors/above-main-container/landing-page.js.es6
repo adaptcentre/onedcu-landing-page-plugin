@@ -312,7 +312,7 @@ function initializePlugin(api, component) {
   let slideshowInterval = null;
 
   $( window ).resize( () => {
-    calculateSlideShowImageHeight();
+    //calculateSlideShowImageHeight();
   });
 
 
@@ -340,7 +340,7 @@ function initializePlugin(api, component) {
       
       slideshowInterval = initSlideshow(slideshowInterval);
 
-      calculateSlideShowImageHeight();
+      //calculateSlideShowImageHeight();
     });
 
     //lets check if we need to show the clock
@@ -356,10 +356,11 @@ function initializePlugin(api, component) {
 
     //first we need to show it.
     $( document ).ready( () => {
-      $('#events-main').removeClass('no-display');
+     //$('#events-main').removeClass('no-display');
     });
     
     //now lets update the events - this is async so no need to wait until doc is ready
+    /*
     getEvents(comingUpCatId, queryEndpoint)
     .then( (commingUpTopics) => {
 
@@ -375,6 +376,7 @@ function initializePlugin(api, component) {
       
       component.set('liveEvents', liveTopics);
     });
+    */
 
   });
 
