@@ -371,7 +371,7 @@ function initializePlugin(api, component) {
       return getEvents(nowOnCatId, queryEndpoint);
     })
     .then( (liveTopics) => {
-      liveTopics.sort( (a,b) => { return a.order - b.order; });
+      liveTopics.sort( (a,b) => { return b.order - a.order; });
       
       component.set('liveEvents', liveTopics);
     });
